@@ -9,7 +9,7 @@ $nb_items: 5;
   left: 1em;
   width: 36px;
   height: 36px;
-  z-index: 3;
+  z-index: 5;
   cursor: pointer;
 
   img {
@@ -40,6 +40,7 @@ $nb_items: 5;
   top: 0;
   left: 0;
   background-color: rgba(0, 0, 0, 0.85);
+  z-index: 4;
 
   ul {
     margin: 54px 0 0 0;

@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel='stylesheet' href='css/root.css'>
     <link rel='stylesheet' href='css/index.css'>
     <link rel='stylesheet' href='css/login.css'>
+    <link rel='stylesheet' href='css/burger.css'>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
           crossorigin="anonymous">
     <script src="js/index.js" defer></script>
@@ -14,39 +14,23 @@
 </head>
 <body>
 <header>
-    <nav>
-        <a class="brand" href="/">
-            <img src="assets/logo_chien.png" width="45" height="45"/>
-            <p>Octavien Doiron</p>
-        </a>
-        <div class="left">
-            <ul class="items">
-                <li class="">
-                    <a class="" href="/newsletter"> Newsletter </a>
-                </li>
-                <li class="">
-                    <a class="" href="/consultations"> Consultations </a>
-                </li>
-                <li class="">
-                    <a class="" href="/avis"> Avis </a>
-                </li>
-                <li class="">
-                    <a class="" href="/contact"> Contact </a>
-                </li>
-                <li class="">
-                    <a class='' href='/login'>Connexion</a>
-                </li>
-            </ul>
-
-            <div class="burger">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd"
-                          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                          clip-rule="evenodd"/>
-                </svg>
-            </div>
+    <a class="brand" href="/">
+        <img src="assets/logo_chien.png" width="45" height="45"/>
+        <p>Octavien Doiron</p>
+    </a>
+    <div>
+        <div class="bar">
+            <img src="assets/burger.svg" alt="">
         </div>
-    </nav>
+        <nav class="menu-collapsed">
+            <ul>
+                <li><a href="/newsletter">newsletter</a></li>
+                <li><a href="/avis">avis</a></li>
+                <li><a href="/contact">contact</a></li>
+                <li><a href="/login">connexion</a></li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 {{content}}
