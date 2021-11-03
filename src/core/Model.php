@@ -28,8 +28,6 @@ abstract class Model
     
     abstract public function rules(): array;
     
-    abstract public function data(): array;
-    
     public function validate(): bool
     {
         foreach ($this->rules() as $attribute => $rules) {

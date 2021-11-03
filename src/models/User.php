@@ -30,17 +30,6 @@ class User extends DbModel
         return parent::save();
     }
     
-    public function data(): array
-    {
-        return [
-            "email" => $this->email ?? "",
-            "firstname" => $this->firstname ?? "",
-            "lastname" => $this->lastname ?? "",
-            "tel" => $this->tel ?? "",
-            "admin" => $this->admin
-        ];
-    }
-    
     public function rules(): array
     {
         return [
