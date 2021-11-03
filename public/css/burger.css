@@ -1,0 +1,71 @@
+.bar {
+  position: absolute;
+  top: 10px;
+  left: 9px;
+  width: 36px;
+  height: 36px;
+  z-index: 3;
+  cursor: pointer;
+}
+.bar img {
+  fill: #FFFFFF;
+  stroke: #FFFFFF;
+  cursor: pointer;
+}
+
+.menu-collapsed {
+  transition: all 0.25s;
+  position: fixed;
+  top: 10px;
+  left: 9px;
+  height: 36px;
+  width: 36px;
+  z-index: 2;
+  cursor: pointer;
+}
+.menu-collapsed ul {
+  transition: all 0s;
+  position: fixed;
+  left: -9000px;
+}
+
+.menu-expanded {
+  transition: all 0.25s;
+  text-align: center;
+  line-height: calc(calc(100vh - 5 * 10px) / 5);
+  height: 100%;
+  width: 100%;
+  border-radius: 0;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+.menu-expanded ul {
+  margin: 54px 0 0 0;
+  transition: all 0s;
+  position: relative;
+  left: 0;
+  z-index: 2;
+  padding: 0;
+}
+.menu-expanded ul li {
+  list-style-type: none;
+}
+.menu-expanded a {
+  transition: all 0.15s;
+  text-decoration: none;
+  font-size: 2em;
+  padding: 5px;
+  color: #fff;
+  display: block;
+  text-transform: uppercase;
+}
+.menu-expanded a:hover {
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.15s;
+  letter-spacing: 2px;
+  color: #333;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/*# sourceMappingURL=burger.css.map */

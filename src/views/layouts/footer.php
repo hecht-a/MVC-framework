@@ -7,35 +7,43 @@
     <link rel='stylesheet' href='css/root.css'>
     <link rel='stylesheet' href='css/index.css'>
     <link rel='stylesheet' href='css/login.css'>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          crossorigin="anonymous">
+    <script src="js/index.js" defer></script>
     <title> Accueil </title>
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-expand-lg">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="/">
-                <img src="assets/logo_chien.png" width="45" height="45"/>
-                <p>Octavien Doiron</p>
-            </a>
-            <div class="d-flex">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/newsletter"> Newsletter </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/consultations"> Consultations </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/avis"> Avis </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/contact"> Contact </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class='nav-link' href='/login'>Connexion</a>
-                    </li>
-                </ul>
+    <nav>
+        <a class="brand" href="/">
+            <img src="assets/logo_chien.png" width="45" height="45"/>
+            <p>Octavien Doiron</p>
+        </a>
+        <div class="left">
+            <ul class="items">
+                <li class="">
+                    <a class="" href="/newsletter"> Newsletter </a>
+                </li>
+                <li class="">
+                    <a class="" href="/consultations"> Consultations </a>
+                </li>
+                <li class="">
+                    <a class="" href="/avis"> Avis </a>
+                </li>
+                <li class="">
+                    <a class="" href="/contact"> Contact </a>
+                </li>
+                <li class="">
+                    <a class='' href='/login'>Connexion</a>
+                </li>
+            </ul>
+
+            <div class="burger">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                          d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                          clip-rule="evenodd"/>
+                </svg>
             </div>
         </div>
     </nav>
@@ -50,9 +58,9 @@
                     <div class="logo"><img src="assets/logo_chien.png" width="80" height="80"> </a></div>
                 </div>
                 <div class="d-flex flex-column">
-                    <div class="d-flex"> Octavien </div>
-                    <div class="d-flex justify-content-center"> Doiron </div>
-                    <div class="clinique"> Clinique Vétérinaire </div>
+                    <div class="d-flex"> Octavien</div>
+                    <div class="d-flex justify-content-center"> Doiron</div>
+                    <div class="clinique"> Clinique Vétérinaire</div>
                 </div>
             </div>
             <div class="slogan"> Ensemble, pour une médecine d'excellence</div>
@@ -78,7 +86,7 @@
                     <a> Actualités </a>
                 </li>
             </div>
-            <div id="middle_content"  class="d-flex flex-column m-2">
+            <div id="middle_content" class="d-flex flex-column m-2">
                 <li>
                     <a> Mentions légales </a>
                 </li>
@@ -115,7 +123,7 @@
 </body>
 </html>
 <style>
-    footer{
+    footer {
         background-color: rgb(117, 117, 117);
         position: absolute;
         bottom: 0;
@@ -130,21 +138,21 @@
         display: flex;
     }
 
-    #middle_content{
+    #middle_content {
         vertical-align: middle;
     }
 
-    .clinique{
+    .clinique {
         font-size: 12px;
     }
 
-    #left{
+    #left {
         margin-top: auto;
         margin-bottom: auto;
         margin-right: 20px;
     }
 
-    .slogan{
+    .slogan {
         width: 250px;
         text-align: center;
         font-size: 14px;
@@ -152,7 +160,7 @@
     }
 
 
-    #footer_logo:before{
+    #footer_logo:before {
         width: 250px;
         border-bottom: solid 2px white;
         content: '';
@@ -161,7 +169,7 @@
     }
 
 
-    li{
+    li {
         list-style-type: none;
     }
 </style>

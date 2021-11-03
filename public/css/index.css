@@ -1,99 +1,51 @@
+* {
+  overflow: hidden;
+}
+
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Open', 'sans-serif';
-    /*background-image: url("../img/background.jpeg");*/
+  margin: 0;
+  padding: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+body header {
+  background: #a3be8c;
+  height: 95px;
+  border-bottom: 2px solid #54664a;
+  display: flex;
+  justify-content: center;
+}
+body header .brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body .home {
+  color: #ECEFF4;
+  height: calc(100vh - 97px);
+  background-image: url("/assets/background.png");
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+body .e404 {
+  padding-top: 5em;
+  align-items: flex-start;
+}
+body .container {
+  height: 70%;
+}
+body .titles {
+  display: flex;
+  flex-direction: column;
+  gap: 5em;
+}
+body .titles h1, body .titles h4 {
+  text-align: center;
+  margin: 0;
 }
 
-iframe#frame {
-    display: table-cell;
-}
-
-header a {
-    color: #FFFFFF;
-}
-
-header div.d-flex {
-    margin: 0;
-}
-
-a.navbar-brand p {
-    font-size: 20px;
-    display: inline-block;
-    margin: auto;
-}
-
-div.container-fluid {
-    font-size: 20px;
-    vertical-align: middle;
-
-}
-
-a.nav-link {
-    color: #FFFFFF;
-    padding: 0;
-}
-
-a.nav-link:hover {
-    font-weight: bold;
-    color: black;
-}
-
-div.d-flex {
-    margin: 0;
-}
-
-nav {
-    background-color: var(--green);
-}
-
-a.navbar-brand {
-    text-align: left;
-    margin: auto 0 0;
-}
-
-ul.navbar-nav li {
-    padding-left: 5px;
-}
-
-div.d-flex {
-    margin-top: auto;
-}
-
-#frame {
-    margin: auto;
-    background-color: blueviolet;
-}
-
-.home {
-    color: var(--light-grey);
-    height: calc(100vh - 71px);
-    width: 100vw;
-    background-image: url("/assets/background.png");
-    background-size: cover;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: flex-end;
-}
-
-h1, h4 {
-    text-align: center;
-}
-
-.container, .titles {
-    height: 55%;
-}
-
-.titles {
-    height: 80%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.absolute {
-    position: absolute !important;
-    left: 0;
-    right: 0;
-}
+/*# sourceMappingURL=index.css.map */

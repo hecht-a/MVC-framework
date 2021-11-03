@@ -19,6 +19,7 @@ class AuthController extends Controller
     public function register(Request $request): bool|array|string
     {
         $user = new User();
+        $this->setLayout("footer");
         if ($request->isPost()) {
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
@@ -28,7 +29,6 @@ class AuthController extends Controller
             }
             return $this->render("user/register", array_merge($user->errors, $user->data()));
         }
-        $this->setLayout("footer");
         return $this->render("user/register", array_merge($user->errors, $user->data()));
     }
 }

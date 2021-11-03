@@ -1,0 +1,96 @@
+@import "root";
+
+.form {
+  width: auto;
+  max-width: 400px;
+  margin: 4em auto auto;
+
+  .form__container {
+    background: $white;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    padding-bottom: .8em;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+
+    .icon {
+      border-radius: 8px 8px 0 0;
+      width: 100%;
+      background: $green;
+      margin-bottom: .8em;
+      box-shadow: 0 5px 5px rgba(0, 0, 0, 0.024), 0 70px 80px rgba(0, 0, 0, 0.06);
+    }
+
+    .formulaire {
+      width: 100%;
+      padding: 1em 3em;
+
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+
+        & > input {
+          border-radius: 0;
+          border: 2px solid $black;
+          padding: .3em;
+        }
+
+        .error {
+          margin: -1em 0 0 0;
+          width: 100%;
+          color: $red;
+          font-size: .8em;
+          text-align: left;
+        }
+
+        .submit {
+          color: $white;
+          border: none;
+          background: $green;
+          border-radius: 5px;
+          padding: .3em;
+        }
+      }
+    }
+
+    .separateur {
+      width: 50%;
+      margin: auto;
+      text-align: center;
+      font-size: 1em;
+      position: relative;
+
+      &:after {
+        content: '';
+        width: 100%;
+        border-bottom: solid 1px $black;
+        position: absolute;
+        left: 0;
+        top: 45%;
+
+      }
+
+      & > p {
+        display: inline-block;
+        z-index: 3;
+        padding: 0 20px;
+        color: $black;
+        position: relative;
+        margin: 0;
+        background: $white;
+
+      }
+    }
+
+    .link__signin > a {
+      text-transform: uppercase;
+      text-decoration: none;
+      color: $black;
+    }
+  }
+}
+
+
+

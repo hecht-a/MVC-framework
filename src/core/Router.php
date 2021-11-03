@@ -54,14 +54,14 @@ class Router
         if (Application::$app->session->getFlash("success")) {
             $content = str_replace("{{flashMessages}}", "<div class='alert alert-success absolute'>" . Application::$app->session->getFlash("success") . " </div>", $content);
         }
-        return preg_replace("/.*{{.*}}.*/", "", $content);
+        return preg_replace("/.*({{.*}}).*/", "", $content);
     }
     
     public function renderContent($viewContent): array|bool|string
     {
         $layoutContent = $this->layoutContent();
         $content = str_replace("{{content}}", $viewContent, $layoutContent);
-        return preg_replace("/.*{{.*}}.*/", "", $content);
+        return preg_replace("/.*({{.*}}).*/", "", $content);
     }
     
     protected function layoutContent(): bool|string
@@ -80,6 +80,6 @@ class Router
         foreach ($params as $key => $value) {
             $content = str_replace("{{" . $key . "}}", strval($value), $content);
         }
-        return preg_replace("/.*{{.*}}.*/", "", $content);
+        return preg_replace("/.*({{.*}}).*/", "", $content);
     }
 }
