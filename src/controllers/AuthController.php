@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
+use App\Core\Application;
 use App\Core\Controller;
 use App\Core\Request;
 use App\Models\User;
@@ -20,8 +21,9 @@ class AuthController extends Controller
         $user = new User();
         if ($request->isPost()) {
             $user->loadData($request->getBody());
-            if ($user->validate() && $user->register()) {
-                return "Success";
+            if ($user->validate() && $user->save()) {
+                
+                Application::$app->response->redirect("/");
             }
             return $this->render("user/register", array_merge($user->errors, $user->data()));
         }

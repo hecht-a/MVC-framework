@@ -54,6 +54,18 @@ abstract class Model
                 if ($ruleName === self::RULE_MATCH && $value !== $this->{$rule["match"]}) {
                     $this->addError($attribute, self::RULE_MATCH, $rule);
                 }
+                if ($ruleName === self::RULE_UNIQUE) {
+                    $className = $rule["class"];
+                    $uniqueAttr = $rule["attribute"] ?? $attribute;
+                    $tableName = $className::tableName();
+                    $statement = Application::$app->db->prepare("SELECT id FROM $tableName WHERE $uniqueAttr = :attr");
+                    $statement->bindValue(":attr", $value);
+                    $statement->execute();
+                    $record = $statement->fetchObject();
+                    if($record) {
+                        $this->addError($attribute, self::RULE_UNIQUE, ["field" => $attribute]);
+                    }
+                }
             }
         }
         
@@ -76,7 +88,8 @@ abstract class Model
             self::RULE_EMAIL => "Ce champ doit être une adresse email valide.",
             self::RULE_MIN => "La taille minimum de ce champ doit être {min}",
             self::RULE_MAX => "La taille maximale de ce champ doit être {max}",
-            self::RULE_MATCH => "Ce champ doit correspondre au champ {match}"
+            self::RULE_MATCH => "Ce champ doit correspondre au champ {match}",
+            self::RULE_UNIQUE => "Un enregistrement avec ce {field} existe déjà."
         ];
     }
     

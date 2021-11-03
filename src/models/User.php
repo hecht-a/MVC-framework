@@ -4,22 +4,30 @@ declare(strict_types=1);
 
 namespace App\Models;
 
-use App\Core\Model;
+use App\Core\DbModel;
 
-class User extends Model
+class User extends DbModel
 {
-    public string $tableName = "utilisateurs";
+    const IS_ADMIN = 1;
+    const IS_NOT_ADMIN = 0;
     
     public string $email;
     public string $password;
     public string $firstname;
     public string $lastname;
     public string $tel;
-    public bool $admin;
+    public int $admin = self::IS_NOT_ADMIN;
     
-    public function register()
+    public function tableName(): string
     {
+        return "users";
+    }
     
+    public function save(): bool
+    {
+        $this->admin = self::IS_NOT_ADMIN;
+        $this->password = hash("SHA512", $this->password);
+        return parent::save();
     }
     
     public function data(): array
@@ -28,7 +36,8 @@ class User extends Model
             "email" => $this->email ?? "",
             "firstname" => $this->firstname ?? "",
             "lastname" => $this->lastname ?? "",
-            "tel" => $this->tel ?? ""
+            "tel" => $this->tel ?? "",
+            "admin" => $this->admin
         ];
     }
     
@@ -37,9 +46,16 @@ class User extends Model
         return [
             "firstname" => [self::RULE_REQUIRED],
             "lastname" => [self::RULE_REQUIRED],
-            "email" => [self::RULE_REQUIRED, self::RULE_EMAIL],
+            "email" => [self::RULE_REQUIRED, self::RULE_EMAIL, [
+                self::RULE_UNIQUE, "class" => self::class, "attribute" => "email"
+            ]],
             "tel" => [self::RULE_REQUIRED],
             "password" => [self::RULE_REQUIRED, [self::RULE_MIN, "min" => 8]]
         ];
+    }
+    
+    public function attributes(): array
+    {
+        return ["firstname", "lastname", "email", "password", "tel", "admin"];
     }
 }
