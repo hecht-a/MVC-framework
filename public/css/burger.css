@@ -1,7 +1,7 @@
 .bar {
   position: absolute;
-  top: 10px;
-  left: 9px;
+  top: 1.8em;
+  left: 1em;
   width: 36px;
   height: 36px;
   z-index: 3;
@@ -16,12 +16,6 @@
 .menu-collapsed {
   transition: all 0.25s;
   position: fixed;
-  top: 10px;
-  left: 9px;
-  height: 36px;
-  width: 36px;
-  z-index: 2;
-  cursor: pointer;
 }
 .menu-collapsed ul {
   transition: all 0s;
