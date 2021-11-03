@@ -50,13 +50,18 @@ class Router
     {
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view, $params);
-        return str_replace("{{content}}", $viewContent, $layoutContent);
+        $content = str_replace("{{content}}", $viewContent, $layoutContent);
+        if (Application::$app->session->getFlash("success")) {
+            $content = str_replace("{{flashMessages}}", "<div class='alert alert-success absolute'>" . Application::$app->session->getFlash("success") . " </div>", $content);
+        }
+        return preg_replace("/.*{{.*}}.*/", "", $content);
     }
     
     public function renderContent($viewContent): array|bool|string
     {
         $layoutContent = $this->layoutContent();
-        return str_replace("{{content}}", $viewContent, $layoutContent);
+        $content = str_replace("{{content}}", $viewContent, $layoutContent);
+        return preg_replace("/.*{{.*}}.*/", "", $content);
     }
     
     protected function layoutContent(): bool|string

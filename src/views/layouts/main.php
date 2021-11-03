@@ -40,7 +40,7 @@
         </div>
     </nav>
 </header>
-
+{{flashMessages}}
 {{content}}
 </body>
 </html>

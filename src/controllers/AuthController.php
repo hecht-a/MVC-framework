@@ -22,8 +22,9 @@ class AuthController extends Controller
         if ($request->isPost()) {
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
-                
+                Application::$app->session->setFlash("success", "Compte créé avec succès");
                 Application::$app->response->redirect("/");
+                exit;
             }
             return $this->render("user/register", array_merge($user->errors, $user->data()));
         }
