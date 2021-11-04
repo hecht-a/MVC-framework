@@ -6,7 +6,9 @@
             <div class="formulaire">
                 <form name="login" action="" method="POST">
                     <input type="email" name="email" placeholder="E-mail">
+                    <p class='error'>{{emailError}}</p>
                     <input type="password" name="password" placeholder="Mot de passe">
+                    <p class='error'>{{passwordError}}</p>
                     <button type="submit" class="submit">Se connecter</button>
                 </form>
             </div>

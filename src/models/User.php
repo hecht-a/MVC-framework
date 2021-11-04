@@ -12,15 +12,20 @@ class User extends DbModel
     const IS_NOT_ADMIN = 0;
     
     public string $email;
-    public string $password;
+    public string $password = "";
     public string $firstname;
     public string $lastname;
     public string $tel;
     public int $admin = self::IS_NOT_ADMIN;
     
-    public function tableName(): string
+    public static function tableName(): string
     {
         return "users";
+    }
+    
+    public static function primaryKey(): string
+    {
+        return "id";
     }
     
     public function save(): bool
@@ -46,5 +51,16 @@ class User extends DbModel
     public function attributes(): array
     {
         return ["firstname", "lastname", "email", "password", "tel", "admin"];
+    }
+    
+    public function data(): array
+    {
+        return [
+            "email" => $this->email ?? "",
+            "firstname" => $this->firstname ?? "",
+            "lastname" => $this->lastname ?? "",
+            "tel" => $this->tel ?? "",
+            "admin" => $this->admin
+        ];
     }
 }

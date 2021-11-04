@@ -24,7 +24,7 @@
                 <li><a href="/newsletter">newsletter</a></li>
                 <li><a href="/avis">avis</a></li>
                 <li><a href="/contact">contact</a></li>
-                <li><a href="/login">connexion</a></li>
+                {{user}}
             </ul>
         </nav>
     </div>

@@ -1,7 +1,7 @@
 @import "root";
 
 $burger__color: $white;
-$nb_items: 5;
+$nb_items: 6;
 
 .bar {
   position: absolute;
@@ -43,7 +43,7 @@ $nb_items: 5;
   z-index: 4;
 
   ul {
-    margin: 54px 0 0 0;
+    margin: calc(36px + 1.8em * 2) 0 0 0;
     transition: all 0s;
     position: relative;
     left: 0;

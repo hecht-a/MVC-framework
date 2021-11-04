@@ -43,7 +43,7 @@ class Router
             Application::$app->controller = new $callback[0]();
             $callback[0] = Application::$app->controller;
         }
-        return call_user_func($callback, $this->request);
+        return call_user_func($callback, $this->request, $this->response);
     }
     
     public function renderView(string $view, $params = []): array|bool|string
@@ -51,6 +51,13 @@ class Router
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view, $params);
         $content = str_replace("{{content}}", $viewContent, $layoutContent);
+        
+        if(Application::$app->session->get("user")) {
+            $content = str_replace("{{user}}", "<li><a href='/profile'>profil</a></li><li><a href='/logout'>déconnexion</a></li>", $content);
+        } else {
+            $content = str_replace("{{user}}", "<li><a href='/login'>connexion</a></li>", $content);
+        }
+        
         if (Application::$app->session->getFlash("success")) {
             $content = str_replace("{{flashMessages}}", "<div class='alert alert-success absolute'>" . Application::$app->session->getFlash("success") . " </div>", $content);
         }
