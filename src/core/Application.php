@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use Exception;
+
 class Application
 {
     public static string $ROOT_DIR;
@@ -15,6 +17,7 @@ class Application
     public Database $db;
     public Session $session;
     public ?DbModel $user;
+    public View $view;
     
     public static Application $app;
     
@@ -29,9 +32,10 @@ class Application
         $this->router = new Router($this->request, $this->response);
         $this->db = new Database($config["db"]);
         $this->session = new Session();
+        $this->view = new View();
         
         $primaryValue = $this->session->get("user");
-        if($primaryValue) {
+        if ($primaryValue) {
             $primaryKey = $this->userClass::primarykey();
             $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
         } else {
@@ -39,9 +43,23 @@ class Application
         }
     }
     
+    public static function isGuest(): bool
+    {
+        return !self::$app->user;
+    }
+    
     public function run()
     {
-        echo $this->router->resolve();
+        try {
+            echo $this->router->resolve();
+        } catch (Exception $e) {
+            Application::$app->response->setStatusCode($e->getCode());
+            $this->view->setTitle($e->getCode() . " - " . $e->getMessage());
+            echo $this->view->renderView("_error", [
+                "message" => $e->getMessage(),
+                "code" => $e->getCode()
+            ]);
+        }
     }
     
     /**
