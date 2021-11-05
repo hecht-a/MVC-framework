@@ -13,7 +13,7 @@ class Controller
     /**
      * @var BaseMiddleware[]
      */
-    protected array $middlewares;
+    protected array $middlewares = [];
     
     public function render($view, $params = []): bool|array|string
     {

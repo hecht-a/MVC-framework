@@ -2,8 +2,17 @@
 
 @media (max-width: 900px) {
   .form {
-    margin: 1em !important;
+    margin: 1em auto !important;
   }
+
+  .container {
+    height: 100% !important;
+    padding: 1em;
+  }
+}
+
+.container {
+  height: calc(100vh - 227px);
 }
 
 .form {
@@ -27,6 +36,11 @@
       background: $green;
       margin-bottom: .8em;
       box-shadow: 0 5px 5px rgba(0, 0, 0, 0.024), 0 70px 80px rgba(0, 0, 0, 0.06);
+
+      img {
+        width: 64px;
+        height: 64px;
+      }
     }
 
     .message {
@@ -42,7 +56,7 @@
         flex-direction: column;
         gap: 1em;
 
-        & > input {
+        & > input, & > textarea {
           border-radius: 0;
           border: 2px solid $black;
           padding: .6em;
@@ -50,6 +64,10 @@
           font-family: inherit;
           font-size: inherit;
           line-height: inherit;
+        }
+
+        & > textarea {
+          resize: vertical;
         }
 
         .error {

@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use App\Controllers\AuthController;
+use App\Controllers\ContactController;
 use App\Core\Application;
 use App\Models\User;
 use Dotenv\Dotenv;
@@ -20,16 +21,20 @@ $config = [
 
 $app = new Application(dirname(__DIR__) . "/src", $config);
 
-$app->router->get("/", "home");
+$router = $app->router;
 
-$app->router->get("/login", [AuthController::class, "login"]);
-$app->router->post("/login", [AuthController::class, "login"]);
+$router->get("/", "home");
 
-$app->router->get("/register", [AuthController::class, "register"]);
-$app->router->post("/register", [AuthController::class, "register"]);
+$router->get("/login", [AuthController::class, "login"]);
+$router->post("/login", [AuthController::class, "login"]);
 
-$app->router->get("/profile", [AuthController::class, "profile"]);
+$router->get("/register", [AuthController::class, "register"]);
+$router->post("/register", [AuthController::class, "register"]);
 
-$app->router->get("/logout", [AuthController::class, "logout"]);
+$router->get("/profile", [AuthController::class, "profile"]);
+
+$router->get("/logout", [AuthController::class, "logout"]);
+
+$router->get("/contact", [ContactController::class, "contact"]);
 
 $app->run();

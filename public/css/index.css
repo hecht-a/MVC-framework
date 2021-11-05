@@ -76,7 +76,7 @@ body .e404 {
   align-items: flex-start;
 }
 body .container {
-  height: 70%;
+  overflow: auto !important;
 }
 body .titles {
   display: flex;

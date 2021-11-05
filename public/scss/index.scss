@@ -90,7 +90,7 @@ body {
   }
 
   .container {
-    height: 70%;
+    overflow: auto !important;
   }
 
   .titles {

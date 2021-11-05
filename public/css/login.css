@@ -1,8 +1,17 @@
 @media (max-width: 900px) {
   .form {
-    margin: 1em !important;
+    margin: 1em auto !important;
+  }
+
+  .container {
+    height: 100% !important;
+    padding: 1em;
   }
 }
+.container {
+  height: calc(100vh - 227px);
+}
+
 .form {
   width: auto;
   max-width: 400px;
@@ -25,6 +34,10 @@
   margin-bottom: 0.8em;
   box-shadow: 0 5px 5px rgba(0, 0, 0, 0.024), 0 70px 80px rgba(0, 0, 0, 0.06);
 }
+.form .form__container .icon img {
+  width: 64px;
+  height: 64px;
+}
 .form .form__container .message {
   margin: 0;
 }
@@ -37,7 +50,7 @@
   flex-direction: column;
   gap: 1em;
 }
-.form .form__container .formulaire form > input {
+.form .form__container .formulaire form > input, .form .form__container .formulaire form > textarea {
   border-radius: 0;
   border: 2px solid #2E3440;
   padding: 0.6em;
@@ -45,6 +58,9 @@
   font-family: inherit;
   font-size: inherit;
   line-height: inherit;
+}
+.form .form__container .formulaire form > textarea {
+  resize: vertical;
 }
 .form .form__container .formulaire form .error {
   margin: -1em 0 0 0;
