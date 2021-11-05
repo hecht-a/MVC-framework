@@ -1,3 +1,7 @@
+<?php
+$this->title = "Accueil";
+?>
+
 <div class="home">
     <div class="container">
         <?= isset($_GET["success"]) && isset($_SESSION["success"]) ? $_SESSION["success"] : "" ?>

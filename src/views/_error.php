@@ -1,4 +1,4 @@
 <div class="container">
     <div class="home e404">
-        <h1>Page introuvable</h1>
+        <h2>Erreur {{code}} - {{message}}</h2>
     </div>

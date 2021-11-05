@@ -1,5 +1,6 @@
 * {
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 body {
@@ -28,9 +29,40 @@ body header .brand {
 body header .brand p {
   margin: 0;
 }
+body .notification {
+  position: absolute;
+  padding: 0.5em;
+  word-break: break-word;
+  max-width: 20em;
+  max-height: 4em;
+  border-radius: 6px;
+  top: calc(95px + 1em);
+  right: 1em;
+  animation: slidein 0.5s, slideout 0.5s;
+}
+@keyframes slidein {
+  from {
+    right: -40em;
+  }
+  to {
+    right: 1em;
+  }
+}
+@keyframes slideout {
+  from {
+    right: 1em;
+  }
+  to {
+    right: -40em;
+  }
+}
+body .success {
+  background: #88c0d0;
+  border: 1px solid #5e81ac;
+}
 body .home {
   color: #ECEFF4;
-  height: calc(100vh - 97px);
+  height: calc(100vh - 95px);
   background-image: url("/assets/background.png");
   background-size: cover;
   background-position: center;

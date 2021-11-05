@@ -1,9 +1,17 @@
 @import "root";
 
+@media (max-width: 900px) {
+  .form {
+    margin: 1em !important;
+  }
+}
+
 .form {
   width: auto;
   max-width: 400px;
-  margin: 4em auto auto;
+  margin: 4em auto;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
   .form__container {
     background: $white;
@@ -12,7 +20,6 @@
     flex-direction: column;
     text-align: center;
     padding-bottom: .8em;
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
 
     .icon {
       border-radius: 8px 8px 0 0;
@@ -20,6 +27,10 @@
       background: $green;
       margin-bottom: .8em;
       box-shadow: 0 5px 5px rgba(0, 0, 0, 0.024), 0 70px 80px rgba(0, 0, 0, 0.06);
+    }
+
+    .message {
+      margin: 0;
     }
 
     .formulaire {
@@ -34,7 +45,11 @@
         & > input {
           border-radius: 0;
           border: 2px solid $black;
-          padding: .3em;
+          padding: .6em;
+          margin: 0;
+          font-family: inherit;
+          font-size: inherit;
+          line-height: inherit;
         }
 
         .error {
@@ -50,7 +65,8 @@
           border: none;
           background: $green;
           border-radius: 5px;
-          padding: .3em;
+          padding: .6em;
+          font-size: 1em;
         }
       }
     }

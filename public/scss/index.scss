@@ -3,6 +3,7 @@
 $header__height: 95px;
 * {
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 body {
@@ -34,9 +35,46 @@ body {
     }
   }
 
+  .notification {
+    position: absolute;
+    padding: .5em;
+    word-break: break-word;
+    max-width: 20em;
+    max-height: 4em;
+    border-radius: 6px;
+    top: calc(#{$header__height} + 1em);
+    right: 1em;
+    animation: slidein .5s, slideout .5s;
+
+    @keyframes slidein {
+      from {
+        right: -40em;
+      }
+
+      to {
+        right: 1em;
+      }
+    }
+
+    @keyframes slideout {
+      from {
+        right: 1em;
+      }
+
+      to {
+        right: -40em;
+      }
+    }
+  }
+
+  .success {
+    background: $frost-2;
+    border: 1px solid $frost-4;
+  }
+
   .home {
     color: $light-grey;
-    height: calc(100vh - #{$header__height + 2});
+    height: calc(100vh - #{$header__height});
     background-image: url("/assets/background.png");
     background-size: cover;
     background-position: center;

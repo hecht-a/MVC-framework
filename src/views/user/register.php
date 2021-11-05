@@ -1,3 +1,7 @@
+<?php
+$this->title = "Inscription";
+?>
+
 <div class="container">
     <div class="form">
         <div class="form__container">

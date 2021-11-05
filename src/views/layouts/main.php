@@ -7,7 +7,7 @@
     <link rel='stylesheet' href='css/index.css'>
     <link rel='stylesheet' href='css/burger.css'>
     <script src="js/index.js" defer></script>
-    <title> Accueil </title>
+    <title>{{title}}</title>
 </head>
 <body>
 <header>
