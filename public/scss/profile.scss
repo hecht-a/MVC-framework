@@ -1,0 +1,35 @@
+@media (max-width: 900px) {
+  .profile__container {
+    & > div {
+      align-items: flex-start !important;
+    }
+
+    .inline {
+      width: 100% !important;
+      flex-direction: column !important;
+    }
+  }
+}
+
+.profile__container {
+  & > div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    p {
+      font-size: 1.3em;
+    }
+
+    h1 {
+      align-self: center;
+    }
+
+    .inline {
+      width: 50%;
+      display: flex;
+      justify-content: space-evenly;
+    }
+  }
+}

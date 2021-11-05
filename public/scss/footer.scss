@@ -1,0 +1,93 @@
+@import "root";
+
+@media (max-width: 900px) {
+  html, body {
+    overflow: auto !important;
+  }
+  footer {
+    flex-direction: column !important;
+    height: auto !important;
+    gap: 1em !important;
+    position: static !important;
+
+    .left {
+      flex-direction: column !important;
+    }
+
+    .sep {
+      display: none !important;
+    }
+
+    .right {
+      flex-direction: column !important;
+      gap: .6em !important;
+
+      & > .link:first-child {
+        flex-direction: row !important;
+      }
+    }
+  }
+}
+
+footer {
+  background-color: $grey-5;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  height: 132px;
+  color: $white;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3em;
+
+  & > div {
+    display: flex;
+  }
+
+  .left {
+    flex-direction: column;
+
+    .logo__container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      gap: .8em;
+
+      .text {
+        p {
+          margin: .3em;
+        }
+      }
+    }
+
+    .slogan {
+      margin: .3em;
+    }
+  }
+
+  .sep {
+    width: 2px;
+    height: 80%;
+    background: $white;
+  }
+
+  .right {
+    gap: 2em;
+
+    .link {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: .4em;
+
+      a[href] {
+        text-decoration: none;
+        color: $grey-1;
+      }
+    }
+  }
+}
