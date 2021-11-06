@@ -5,13 +5,13 @@
     margin: 1em auto !important;
   }
 
-  .container {
+  .container, .login__container, .register__container, .contact__container {
     height: 100% !important;
     padding: 1em;
   }
 }
 
-.container {
+.container, .login__container, .register__container, .contact__container {
   height: calc(100vh - 227px);
 }
 

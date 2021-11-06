@@ -76,6 +76,8 @@ body .e404 {
   align-items: flex-start;
 }
 body .container {
+  width: 60vw;
+  margin: auto;
   overflow: auto !important;
 }
 body .titles {
