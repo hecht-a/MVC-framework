@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use PDO;
+use PDOStatement;
+
 abstract class DbModel extends Model
 {
     abstract public static function tableName(): string;
@@ -19,7 +22,7 @@ abstract class DbModel extends Model
         
         $statement = self::prepare("INSERT INTO $tableName (" . implode(",", $attributes) . ") VALUES (" . implode(",", $params) . ")");
         foreach ($attributes as $attribute) {
-            $statement->bindValue(":$attribute", $this->{$attribute});
+            $statement->bindValue(":$attribute", $this->data()[$attribute]);
         }
         $statement->execute();
         return true;
@@ -37,7 +40,15 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
     
-    public static function prepare($sql): bool|\PDOStatement
+    public static function findAll(): array
+    {
+        $tableName = static::tableName();
+        $statement = self::prepare("SELECT * FROM $tableName");
+        $statement->execute();
+        return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
+    }
+    
+    public static function prepare($sql): bool|PDOStatement
     {
         return Application::$app->db->pdo->prepare($sql);
     }
