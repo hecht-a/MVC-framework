@@ -3,9 +3,6 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-
-use JetBrains\PhpStorm\ArrayShape;
-
 abstract class Model
 {
     public const RULE_REQUIRED = "required";
@@ -15,7 +12,7 @@ abstract class Model
     public const RULE_MATCH = "match";
     public const RULE_UNIQUE = "unique";
     
-    public function loadData($data)
+    public function loadData(array $data)
     {
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
@@ -95,15 +92,5 @@ abstract class Model
             self::RULE_MATCH => "Ce champ doit correspondre au champ {match}",
             self::RULE_UNIQUE => "Un enregistrement avec ce {field} existe déjà."
         ];
-    }
-    
-    public function hasError($attribute)
-    {
-        return $this->errors[$attribute] ?? false;
-    }
-    
-    public function getFirstError($attribute)
-    {
-        return $this->errors[$attribute][0] ?? false;
     }
 }

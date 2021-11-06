@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Core\Middlewares;
 
-
 use App\Core\Application;
 
 class ConsultationMiddleware extends BaseMiddleware

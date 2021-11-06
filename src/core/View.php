@@ -11,7 +11,7 @@ class View
         $this->title = $title;
     }
     
-    public function renderView(string $view, $params = []): array|bool|string
+    public function renderView(string $view, array $params = []): array|bool|string
     {
         $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view, $params);
@@ -30,7 +30,7 @@ class View
         return preg_replace("/.*({{.*}}).*/", "", $content);
     }
     
-    public function renderContent($viewContent): array|bool|string
+    public function renderContent(string $viewContent): array|bool|string
     {
         $layoutContent = $this->layoutContent();
         $content = str_replace("{{content}}", $viewContent, $layoutContent);
@@ -45,7 +45,7 @@ class View
         return ob_get_clean();
     }
     
-    protected function renderOnlyView($view, $params): bool|string
+    protected function renderOnlyView(string $view, array $params = []): bool|string
     {
         ob_start();
         include_once Application::$ROOT_DIR . "/views/$view.php";

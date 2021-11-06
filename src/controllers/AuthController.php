@@ -56,7 +56,7 @@ class AuthController extends Controller
         $response->redirect("/");
     }
     
-    public function profile()
+    public function profile(): bool|array|string
     {
         /** @var $user User */
         $user = User::findOne(["id" => Application::$app->session->get("user")]);

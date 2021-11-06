@@ -3,8 +3,6 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-use JetBrains\PhpStorm\Pure;
-
 class Request
 {
     public function getPath(): string
@@ -30,7 +28,7 @@ class Request
         return $this->method() === "post";
     }
     
-    public function getBody()
+    public function getBody(): array
     {
         $body = [];
         if($this->method() === "get") {
