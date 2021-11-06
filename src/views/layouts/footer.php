@@ -9,6 +9,7 @@
     <link rel='stylesheet' href='/css/burger.css'>
     <link rel='stylesheet' href='/css/profile.css'>
     <link rel='stylesheet' href='/css/footer.css'>
+    <link rel='stylesheet' href='/css/consultation.css'>
     <script src="/js/index.js" defer></script>
     <title>{{title}}</title>
 </head>

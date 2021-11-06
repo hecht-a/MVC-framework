@@ -1,0 +1,86 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+.container form .consultation__form {
+  display: flex;
+}
+.container form .consultation__form .consultation__container, .container form .consultation__form .right {
+  height: 100%;
+}
+.container form .consultation__form .consultation__container {
+  text-align: center;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.container form .consultation__form .consultation__container .animal, .container form .consultation__form .consultation__container .consultation, .container form .consultation__form .consultation__container .problem {
+  margin: 0 auto 2em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.container form .consultation__form .consultation__container .animal select, .container form .consultation__form .consultation__container .consultation select, .container form .consultation__form .consultation__container .problem select {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #2E3440;
+  padding: 0.6em;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.container form .consultation__form .consultation__container .problem {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.3em;
+}
+.container form .consultation__form .consultation__container .problem > textarea {
+  border-radius: 0;
+  border: 2px solid #2E3440;
+  width: 100%;
+  padding: 0.6em;
+  margin: auto;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.container form .consultation__form .right {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  justify-content: center;
+  align-items: center;
+}
+.container form .consultation__form .right .calendar__container {
+  display: flex;
+  flex-direction: column;
+}
+.container form .submit {
+  margin: auto;
+  cursor: pointer;
+  color: #FFFFFF;
+  border: none;
+  background: #a3be8c;
+  border-radius: 5px;
+  padding: 0.6em;
+  font-size: 1em;
+}
+
+.error {
+  width: 100%;
+  color: #bf616a;
+  font-size: 0.8em;
+  text-align: left;
+}
+
+/*# sourceMappingURL=consultation.css.map */
