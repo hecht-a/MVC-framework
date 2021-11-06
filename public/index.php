@@ -26,7 +26,7 @@ $router = $app->router;
 
 $router->get("/", "home");
 
-$router->get("/login/l", [AuthController::class, "login"]);
+$router->get("/login", [AuthController::class, "login"]);
 $router->post("/login", [AuthController::class, "login"]);
 $router->get("/register", [AuthController::class, "register"]);
 $router->post("/register", [AuthController::class, "register"]);
@@ -36,5 +36,6 @@ $router->get("/logout", [AuthController::class, "logout"]);
 $router->get("/contact", [ContactController::class, "index"]);
 
 $router->get("/consultation", [ConsultationController::class, "index"]);
+$router->post("/consultation", [ConsultationController::class, "index"]);
 
 $app->run();
