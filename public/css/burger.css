@@ -26,7 +26,7 @@
 .menu-expanded {
   transition: all 0.25s;
   text-align: center;
-  line-height: calc(calc(100vh - 6 * 10px) / 6);
+  line-height: calc(calc(100vh - 7 * 10px) / 7);
   height: 100%;
   width: 100%;
   border-radius: 0;
