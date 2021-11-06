@@ -23,6 +23,7 @@
             <ul>
                 <li><a href="/newsletter">newsletter</a></li>
                 <li><a href="/avis">avis</a></li>
+                <li><a href="/consultation">consultation</a></li>
                 <li><a href="/contact">contact</a></li>
                 {{user}}
             </ul>

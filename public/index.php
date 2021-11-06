@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 use App\Controllers\AuthController;
+use App\Controllers\ConsultationController;
 use App\Controllers\ContactController;
 use App\Core\Application;
 use App\Models\User;
@@ -25,16 +26,15 @@ $router = $app->router;
 
 $router->get("/", "home");
 
-$router->get("/login", [AuthController::class, "login"]);
+$router->get("/login/l", [AuthController::class, "login"]);
 $router->post("/login", [AuthController::class, "login"]);
-
 $router->get("/register", [AuthController::class, "register"]);
 $router->post("/register", [AuthController::class, "register"]);
-
 $router->get("/profile", [AuthController::class, "profile"]);
-
 $router->get("/logout", [AuthController::class, "logout"]);
 
-$router->get("/contact", [ContactController::class, "contact"]);
+$router->get("/contact", [ContactController::class, "index"]);
+
+$router->get("/consultation", [ConsultationController::class, "index"]);
 
 $app->run();

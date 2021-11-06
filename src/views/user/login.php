@@ -5,7 +5,7 @@ $this->title = "Connexion";
 <div class="container">
     <div class="form">
         <div class="form__container">
-            <div class="icon"><img src="assets/compte.png" alt=""></div>
+            <div class="icon"><img src="/assets/compte.png" alt=""></div>
             <p class="message">Connexion</p>
             <div class="formulaire">
                 <form name="login" action="" method="POST">

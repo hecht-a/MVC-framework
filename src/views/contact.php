@@ -5,7 +5,7 @@ $this->title = "Nous contacter";
 <div class="container">
     <div class="form">
         <div class="form__container">
-            <div class="icon"><img src="assets/contact.svg" alt=""></div>
+            <div class="icon"><img src="/assets/contact.svg" alt=""></div>
             <p class="message">Nous contacter</p>
             <div class="formulaire">
                 <form name="login" action="" method="POST">

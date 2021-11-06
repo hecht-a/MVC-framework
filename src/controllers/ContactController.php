@@ -7,7 +7,7 @@ use App\Core\Controller;
 
 class ContactController extends Controller
 {
-    public function contact()
+    public function index(): bool|array|string
     {
         $this->setLayout("footer");
         return $this->render("contact");
