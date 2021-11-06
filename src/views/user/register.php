@@ -2,7 +2,7 @@
 $this->title = "Inscription";
 ?>
 
-<div class="container">
+<div class="register__container">
     <div class="form">
         <div class="form__container">
             <div class="icon"><img src="/assets/compte.png" alt=""></div>

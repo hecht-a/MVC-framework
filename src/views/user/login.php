@@ -2,7 +2,7 @@
 $this->title = "Connexion";
 ?>
 
-<div class="container">
+<div class="login__container">
     <div class="form">
         <div class="form__container">
             <div class="icon"><img src="/assets/compte.png" alt=""></div>

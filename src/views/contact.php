@@ -2,7 +2,7 @@
 $this->title = "Nous contacter";
 ?>
 
-<div class="container">
+<div class="contact__container">
     <div class="form">
         <div class="form__container">
             <div class="icon"><img src="/assets/contact.svg" alt=""></div>
