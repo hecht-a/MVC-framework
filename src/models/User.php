@@ -59,6 +59,7 @@ class User extends DbModel
             "email" => $this->email ?? "",
             "firstname" => $this->firstname ?? "",
             "lastname" => $this->lastname ?? "",
+            "password" => $this->password ?? "",
             "tel" => $this->tel ?? "",
             "admin" => $this->admin
         ];
