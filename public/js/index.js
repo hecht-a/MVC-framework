@@ -5,8 +5,8 @@ bar.addEventListener("click", (e) => {
     const img = bar.querySelector("img")
     menu.classList.toggle("menu-expanded");
     if (menu.classList.contains("menu-expanded")) {
-        img.src = "assets/close.svg"
+        img.src = "/assets/close.svg"
     } else {
-        img.src = "assets/burger.svg"
+        img.src = "/assets/burger.svg"
     }
 });
