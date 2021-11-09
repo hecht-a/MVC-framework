@@ -18,7 +18,8 @@ class m0002_sprint2
                   `type_consultation` int(11) NOT NULL,
                   `problem` longtext NOT NULL,
                   `date_prise_rdv` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-                  `date_rdv` timestamp NOT NULL
+                  `date_rdv` timestamp NOT NULL,
+                  `done` tinyint(1) DEFAULT 0 NOT NULL
                 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
                 CREATE TABLE IF NOT EXISTS `type_consultation` (
