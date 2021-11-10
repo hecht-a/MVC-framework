@@ -1,6 +1,6 @@
 const bar = document.querySelector(".bar");
 
-bar.addEventListener("click", (e) => {
+bar.addEventListener("click", () => {
     const menu = document.querySelector(".menu-collapsed");
     const img = bar.querySelector("img")
     menu.classList.toggle("menu-expanded");
