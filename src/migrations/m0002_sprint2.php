@@ -1,5 +1,7 @@
 <?php
 
+namespace App\Migrations;
+
 class m0002_sprint2
 {
     public function up()
