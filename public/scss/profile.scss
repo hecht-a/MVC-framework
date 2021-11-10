@@ -12,6 +12,8 @@
 }
 
 .profile__container {
+  height: calc(100vh - 227px);
+
   & > div {
     width: 100%;
     display: flex;

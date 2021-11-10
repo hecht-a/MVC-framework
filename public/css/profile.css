@@ -7,6 +7,9 @@
     flex-direction: column !important;
   }
 }
+.profile__container {
+  height: calc(100vh - 227px);
+}
 .profile__container > div {
   width: 100%;
   display: flex;

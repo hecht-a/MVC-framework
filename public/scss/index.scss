@@ -14,7 +14,7 @@ body {
   header {
     background: $green;
     height: $header__height;
-    border-bottom: 2px solid #54664a;
+    border-bottom: 2px solid $dark-green;
     display: flex;
     justify-content: center;
 
