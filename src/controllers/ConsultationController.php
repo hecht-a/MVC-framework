@@ -26,7 +26,7 @@ class ConsultationController extends Controller
             "typeConsultation" => array_map(fn($m) => ["id" => $m->id, "type" => $m->consultation], TypeConsultation::findAll())
         ];
         $consultation = new Consultation();
-        if($request->isPost()) {
+        if ($request->isPost()) {
             $consultation->loadData(array_merge($request->getBody(), ["user" => Application::$app->session->get("user")]));
             if ($consultation->validate() && $consultation->save()) {
                 Application::$app->session->setFlash("success", "Rendez-vous pris avec succès");

@@ -31,8 +31,10 @@ $users = User::findAll();
                 <td><?= $user->tel ?></td>
                 <td>
                     <form class="admin__user" method="post">
-                        <input type="hidden" name="user_<?= $user->id ?>" value="<?= $user->admin ? "false" : "true" ?>">
-                        <button class="<?= (bool)$user->admin ? "admin" : "" ?>" type="submit"><?= (bool)$user->admin ? "rétrograder" : "promouvoir" ?></button>
+                        <input type="hidden" name="user_<?= $user->id ?>"
+                               value="<?= $user->admin ? "false" : "true" ?>">
+                        <button class="<?= (bool)$user->admin ? "admin" : "" ?>"
+                                type="submit"><?= (bool)$user->admin ? "rétrograder" : "promouvoir" ?></button>
                     </form>
                 </td>
             </tr>
