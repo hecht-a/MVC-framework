@@ -1,6 +1,7 @@
 <?php
 declare(strict_types=1);
 
+use App\Controllers\AdminController;
 use App\Controllers\AuthController;
 use App\Controllers\ConsultationController;
 use App\Controllers\ContactController;
@@ -37,5 +38,12 @@ $router->get("/contact", [ContactController::class, "index"]);
 
 $router->get("/consultation", [ConsultationController::class, "index"]);
 $router->post("/consultation", [ConsultationController::class, "index"]);
+
+$router->group("/admin", function() use ($router) {
+    $router->get("", [AdminController::class, "index"]);
+    $router->get("/consultations", [AdminController::class, "consultations"]);
+    $router->get("/users", [AdminController::class, "users"]);
+    $router->post("/users", [AdminController::class, "changeAdmin"]);
+});
 
 $app->run();

@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Core;
 
+use App\Models\User;
 use Exception;
 
 class Application
@@ -46,6 +47,13 @@ class Application
     public static function isGuest(): bool
     {
         return !self::$app->user;
+    }
+    
+    public static function isAdmin(): bool
+    {
+        /** @var User|false $user */
+        $user = User::findOne(["id" => self::$app->session->get("user")]);
+        return $user && (bool)$user->admin;
     }
     
     public function run()

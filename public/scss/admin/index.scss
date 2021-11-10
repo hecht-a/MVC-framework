@@ -1,0 +1,103 @@
+@import "../root";
+
+.container {
+  margin: 1.4em auto !important;
+  display: flex;
+  height: 100%;
+  gap: 1em;
+
+  .content {
+    width: 100%;
+    height: 100%;
+
+    h1 {
+      text-align: center;
+      margin-top: 0;
+    }
+  }
+}
+
+.admin__navbar {
+  width: 100%;
+  min-height: 50px;
+  font-size: 1.2em;
+  background: $grey-6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      list-style-type: none;
+
+      a {
+        text-decoration: none;
+        padding: 5px;
+        color: #fff;
+        display: block;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
+
+.table {
+  max-height: 50vh;
+  overflow: auto;
+
+  table {
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+
+    td, th {
+      border: 1px solid $dark-green;
+      padding: 8px;
+    }
+
+    td {
+      form {
+        button {
+          cursor: pointer;
+          color: $grey-1;
+          border: none;
+          border-radius: 5px;
+          padding: .4em;
+          font-size: 1em;
+          background: $grey-6;
+        }
+
+        .admin {
+          background: $purple;
+        }
+      }
+    }
+
+    th {
+      text-transform: uppercase;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      text-align: left;
+      background-color: $green;
+      color: white;
+    }
+
+    tr {
+      &:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+
+      &:hover {
+        background-color: #ddd;
+      }
+    }
+  }
+}
