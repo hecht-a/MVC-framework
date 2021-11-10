@@ -51,11 +51,11 @@ class View
         include_once Application::$ROOT_DIR . "/views/$view.php";
         $content = ob_get_clean();
         foreach ($params as $key => $value) {
-            if(is_string($value)) {
+            if(is_string($value) || $key === "code") {
                 $content = str_replace("{{" . $key . "}}", strval($value), $content);
             }
         }
-        return preg_replace("/.*({{.*}}).*/", "", $content);
+        return preg_replace("/.*({{.*}}).*./", "", $content);
     }
     
     private function setTitleInView(string $content, string $title): string
