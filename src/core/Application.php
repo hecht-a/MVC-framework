@@ -63,6 +63,9 @@ class Application
         } catch (Exception $e) {
             Application::$app->response->setStatusCode($e->getCode());
             $this->view->setTitle($e->getCode() . " - " . $e->getMessage());
+            if (isset($this->controller)) {
+                $this->controller->setLayout("main");
+            }
             echo $this->view->renderView("_error", [
                 "message" => $e->getMessage(),
                 "code" => $e->getCode()
