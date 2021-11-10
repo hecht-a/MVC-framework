@@ -16,6 +16,7 @@ class User extends DbModel
     public string $firstname;
     public string $lastname;
     public string $tel;
+    public string $id;
     public int $admin = self::IS_NOT_ADMIN;
     
     public static function tableName(): string
@@ -33,6 +34,11 @@ class User extends DbModel
         $this->admin = self::IS_NOT_ADMIN;
         $this->password = hash("SHA512", $this->password);
         return parent::save();
+    }
+    
+    public function update(): bool
+    {
+        return parent::update();
     }
     
     public function rules(): array
@@ -61,7 +67,8 @@ class User extends DbModel
             "lastname" => $this->lastname ?? "",
             "password" => $this->password ?? "",
             "tel" => $this->tel ?? "",
-            "admin" => $this->admin
+            "admin" => $this->admin,
+            "id" => $this->id ?? "",
         ];
     }
 }

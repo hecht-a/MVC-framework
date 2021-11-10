@@ -19,8 +19,20 @@ abstract class DbModel extends Model
         $tableName = $this->tableName();
         $attributes = $this->attributes();
         $params = array_map(fn($attr) => ":$attr", $attributes);
-        
         $statement = self::prepare("INSERT INTO $tableName (" . implode(",", $attributes) . ") VALUES (" . implode(",", $params) . ")");
+        foreach ($attributes as $attribute) {
+            $statement->bindValue(":$attribute", $this->data()[$attribute]);
+        }
+        $statement->execute();
+        return true;
+    }
+    
+    public function update(): bool
+    {
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        $params = array_map(fn($attr) => "$attr = :$attr", $attributes);
+        $statement = self::prepare("UPDATE $tableName SET " . implode(", ", $params) . " WHERE id = " . $this->data()["id"]);
         foreach ($attributes as $attribute) {
             $statement->bindValue(":$attribute", $this->data()[$attribute]);
         }
