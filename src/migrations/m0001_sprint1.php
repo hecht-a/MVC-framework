@@ -1,7 +1,5 @@
 <?php
 
-namespace App\Migrations;
-
 class m0001_sprint1
 {
     public function up()
@@ -15,7 +13,10 @@ class m0001_sprint1
                   `firstname` varchar(50) NOT NULL,
                   `lastname` varchar(50) NOT NULL,
                   `tel` varchar(10) DEFAULT NULL,
-                  `admin` tinyint(1) DEFAULT 0
+                  `admin` tinyint(1) DEFAULT 0,
+                  `post_code` int(5) NOT NULL,
+                  `city` varchar(255) NOT NULL,
+                  `address` varchar(255) NOT NULL
                 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
                 SQL;
         
