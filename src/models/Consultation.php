@@ -3,18 +3,18 @@ declare(strict_types=1);
 
 namespace App\Models;
 
+use App\Core\Application;
 use App\Core\DbModel;
-use DateTime;
 
 class Consultation extends DbModel
 {
-    public int $id;
+    public string $id = "";
     public string $animal = "";
     public string $user = "";
     public string $type_consultation = "";
     public string $problem = "";
     public string $date_prise_rdv = "";
-    public string $date_rdv = "";
+    public string $rdv = "";
     
     public static function tableName(): string
     {
@@ -23,7 +23,7 @@ class Consultation extends DbModel
     
     public function attributes(): array
     {
-        return ["animal", "user", "type_consultation", "problem", "date_rdv"];
+        return ["animal", "user", "type_consultation", "problem", "rdv"];
     }
     
     public static function primaryKey(): string
@@ -38,7 +38,7 @@ class Consultation extends DbModel
             "user" => [self::RULE_REQUIRED],
             "type_consultation" => [self::RULE_REQUIRED],
             "problem" => [self::RULE_REQUIRED],
-            "date_rdv" => [self::RULE_REQUIRED]
+            "rdv" => [self::RULE_REQUIRED],
         ];
     }
     
@@ -50,8 +50,15 @@ class Consultation extends DbModel
             "type_consultation" => $this->type_consultation,
             "problem" => $this->problem,
             "date_prise_rdv" => $this->date_prise_rdv,
-            "date_rdv" => (new DateTime($this->date_rdv))->format("Y-m-d H:i")
+            "rdv" => $this->rdv,
+            "id" => $this->id
         ];
+    }
+    
+    public static function findAll(): array
+    {
+        /** @var Consultation $consultation */
+        return array_filter(parent::findAll(), fn($consultation) => Application::$app->session->get("user") === $consultation->user);
     }
     
     public function save(): bool
