@@ -31,6 +31,21 @@ class Router
         return $this->openedGroups[count($this->openedGroups) - 1] ?? [];
     }
     
+    public function removeParams(string $path): string
+    {
+        return $this->dropSlash(preg_split("/:.+/", $path)[0]);
+    }
+    
+    public function params(string $path): array
+    {
+        return array_reduce(preg_split("/\//", $path), function($acc, $curr) {
+            if (str_starts_with($curr, ":")) {
+                array_push($acc, $curr);
+            }
+            return $acc;
+        }, []);
+    }
+    
     public function get(string $path, $callback)
     {
         $openedGroup = $this->getRecentGroup();
@@ -51,6 +66,26 @@ class Router
         }
     }
     
+    public function match(string $method, string $path)
+    {
+        $pathSplitted = preg_split("/\//", $path);
+        $matched = array_reduce(array_keys($this->routes[$method]), function($route, $curr) use ($pathSplitted) {
+            if (str_starts_with($curr, "/" . $pathSplitted[1])) {
+                array_push($route, $curr);
+            }
+            return $route;
+        }, []);
+        foreach ($matched as $match) {
+            $matchSplitted = preg_split("/\//", $match);
+            if (count($pathSplitted) === count($matchSplitted)) {
+                if($pathSplitted[count($pathSplitted) - 2] === $matchSplitted[count($matchSplitted) - 2]) {
+                    return $match;
+                }
+            }
+        }
+        return false;
+    }
+    
     /**
      * @throws NotFoundException
      */
@@ -58,10 +93,25 @@ class Router
     {
         $path = $this->dropSlash($this->request->getPath());
         $method = $this->request->method();
-        $callback = $this->routes[$method][$path] ?? false;
+        $routes = $this->routes[$method];
+        $params = [];
+        if ($this->match($method, $path)) {
+            if (count(array_slice(preg_split("/\//", $path), 1)) > 1) {
+                $savePath = $path;
+                $path = $this->match($method, $savePath);
+                if (!$path) {
+                    $this->e404();
+                }
+                foreach (preg_split("/\//", $path) as $key => $routeParams) {
+                    if (in_array($routeParams, $this->params($path))) {
+                        $params[substr($routeParams, 1)] = preg_split("/\//", $savePath)[$key];
+                    }
+                }
+            }
+        }
+        $callback = $routes[$path] ?? false;
         if (!$callback) {
-            Application::$app->response->setStatusCode(404);
-            throw new NotFoundException();
+            $this->e404();
         }
         if (is_string($callback)) {
             return Application::$app->view->renderView($callback);
@@ -73,12 +123,11 @@ class Router
             $controller->action = $callback[1];
             $callback[0] = $controller;
             
-            
             foreach ($controller->getMiddlewares() as $middleware) {
                 $middleware->execute();
             }
         }
-        return call_user_func($callback, $this->request, $this->response);
+        return call_user_func($callback, $this->request, $this->response, $params);
     }
     
     public function group(string $prefix, callable $callback): self
@@ -87,5 +136,14 @@ class Router
         $callback();
         array_pop($this->openedGroups);
         return $this;
+    }
+    
+    /**
+     * @throws NotFoundException
+     */
+    public function e404()
+    {
+        Application::$app->response->setStatusCode(404);
+        throw new NotFoundException();
     }
 }
