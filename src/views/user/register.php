@@ -9,16 +9,28 @@ $this->title = "Inscription";
             <div class="message">Inscription</div>
             <div class="formulaire">
                 <form name="login" action="" method="POST">
-                    <input type="text" name="lastname" placeholder="Nom" value="{{lastname}}">
-                    <p class='error'>{{lastnameError}}</p>
-                    <input type="text" name="firstname" placeholder="Prénom" value="{{firstname}}">
-                    <p class='error'>{{firstnameError}}</p>
-                    <input type="email" name="email" placeholder="E-mail" value="{{email}}">
-                    <p class='error'>{{emailError}}</p>
-                    <input type="password" name="password" placeholder="Mot de passe">
-                    <p class='error'>{{passwordError}}</p>
-                    <input type="tel" name="tel" pattern="[0-9]{10}" placeholder="Téléphone" value="{{tel}}">
-                    <p class='error'>{{telError}}</p>
+                    <div class="inputs">
+                        <div class="left">
+                            <input type="text" name="lastname" placeholder="Nom" value="{{lastname}}">
+                            <p class='error'>{{lastnameError}}</p>
+                            <input type="text" name="firstname" placeholder="Prénom" value="{{firstname}}">
+                            <p class='error'>{{firstnameError}}</p>
+                            <input type="email" name="email" placeholder="E-mail" value="{{email}}">
+                            <p class='error'>{{emailError}}</p>
+                            <input type="password" name="password" placeholder="Mot de passe">
+                            <p class='error'>{{passwordError}}</p>
+                            <input type="tel" name="tel" pattern="[0-9]{10}" placeholder="Téléphone" value="{{tel}}">
+                            <p class='error'>{{telError}}</p>
+                        </div>
+                        <div class="right">
+                            <input type="text" name="address" placeholder="Adresse">
+                            <p class='error'>{{addressError}}</p>
+                            <input type="text" name="city" placeholder="Ville">
+                            <p class='error'>{{cityError}}</p>
+                            <input type="number" name="post_code" placeholder="Code postal">
+                            <p class='error'>{{post_codeError}}</p>
+                        </div>
+                    </div>
                     <button type="submit" class="submit">S'inscrire</button>
                 </form>
             </div>
