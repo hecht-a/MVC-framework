@@ -1,10 +1,12 @@
 <?php
 
+use App\Core\Application;
+
 class m0002_sprint2
 {
     public function up()
     {
-        $db = \App\Core\Application::$app->db;
+        $db = Application::$app->db;
         $SQL = <<<SQL
                 CREATE TABLE IF NOT EXISTS `animaux` (
                   `id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,

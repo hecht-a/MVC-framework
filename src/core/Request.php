@@ -15,14 +15,14 @@ class Request
         return substr($path, 0, $position);
     }
     
-    public function method(): string
-    {
-        return strtolower($_SERVER["REQUEST_METHOD"]);
-    }
-    
     public function isGet(): bool
     {
         return $this->method() === "get";
+    }
+    
+    public function method(): string
+    {
+        return strtolower($_SERVER["REQUEST_METHOD"]);
     }
     
     public function isPost(): bool

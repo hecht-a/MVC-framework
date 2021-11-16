@@ -15,14 +15,14 @@ class TypeConsultation extends DbModel
         return "type_consultation";
     }
     
-    public function attributes(): array
-    {
-        return ["id", "consultation"];
-    }
-    
     public static function primaryKey(): string
     {
         return "id";
+    }
+    
+    public function attributes(): array
+    {
+        return ["id", "consultation"];
     }
     
     public function rules(): array

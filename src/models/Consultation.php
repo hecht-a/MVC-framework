@@ -21,14 +21,20 @@ class Consultation extends DbModel
         return "consultations";
     }
     
-    public function attributes(): array
-    {
-        return ["animal", "user", "type_consultation", "problem", "rdv"];
-    }
-    
     public static function primaryKey(): string
     {
         return "id";
+    }
+    
+    public static function findAll(): array
+    {
+        /** @var Consultation $consultation */
+        return array_filter(parent::findAll(), fn($consultation) => Application::$app->session->get("user") === $consultation->user);
+    }
+    
+    public function attributes(): array
+    {
+        return ["animal", "user", "type_consultation", "problem", "rdv"];
     }
     
     public function rules(): array
@@ -53,12 +59,6 @@ class Consultation extends DbModel
             "rdv" => $this->rdv,
             "id" => $this->id
         ];
-    }
-    
-    public static function findAll(): array
-    {
-        /** @var Consultation $consultation */
-        return array_filter(parent::findAll(), fn($consultation) => Application::$app->session->get("user") === $consultation->user);
     }
     
     public function save(): bool

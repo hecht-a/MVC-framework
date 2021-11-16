@@ -66,6 +66,11 @@ class Database
         return $statement->fetchAll(PDO::FETCH_COLUMN);
     }
     
+    protected function log($message)
+    {
+        echo "[" . date("d-m-Y H:i:s") . "] - " . $message . PHP_EOL;
+    }
+    
     public function saveMigrations($migration)
     {
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES $migration");
@@ -75,10 +80,5 @@ class Database
     public function prepare($sql): bool|PDOStatement
     {
         return $this->pdo->prepare($sql);
-    }
-    
-    protected function log($message)
-    {
-        echo "[" . date("d-m-Y H:i:s") . "] - " . $message . PHP_EOL;
     }
 }

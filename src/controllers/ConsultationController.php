@@ -77,7 +77,8 @@ class ConsultationController extends Controller
         exit;
     }
     
-    public function show(Request $request, Response $response, array $q) {
+    public function show(Request $request, Response $response, array $q)
+    {
         echo "<pre>";
         var_dump(Consultation::findOne(["id" => $q["id"]]));
         echo "</pre>";

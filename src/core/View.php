@@ -7,7 +7,8 @@ class View
 {
     public string $title = "";
     
-    public function setTitle(string $title) {
+    public function setTitle(string $title)
+    {
         $this->title = $title;
     }
     
@@ -30,13 +31,6 @@ class View
         return preg_replace("/.*({{.*}}).*/", "", $content);
     }
     
-    public function renderContent(string $viewContent): array|bool|string
-    {
-        $layoutContent = $this->layoutContent();
-        $content = str_replace("{{content}}", $viewContent, $layoutContent);
-        return preg_replace("/.*({{.*}}).*/", "", $content);
-    }
-    
     protected function layoutContent(): bool|string
     {
         $layout = Application::$app->controller->layout ?? "main";
@@ -51,7 +45,7 @@ class View
         include_once Application::$ROOT_DIR . "/views/$view.php";
         $content = ob_get_clean();
         foreach ($params as $key => $value) {
-            if(is_string($value) || $key === "code") {
+            if (is_string($value) || $key === "code") {
                 $content = str_replace("{{" . $key . "}}", strval($value), $content);
             }
         }
@@ -61,5 +55,12 @@ class View
     private function setTitleInView(string $content, string $title): string
     {
         return str_replace("{{title}}", $title, $content);
+    }
+    
+    public function renderContent(string $viewContent): array|bool|string
+    {
+        $layoutContent = $this->layoutContent();
+        $content = str_replace("{{content}}", $viewContent, $layoutContent);
+        return preg_replace("/.*({{.*}}).*/", "", $content);
     }
 }

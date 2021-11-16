@@ -9,7 +9,7 @@ use Exception;
 class Application
 {
     public static string $ROOT_DIR;
-    
+    public static Application $app;
     public string $userClass;
     public Router $router;
     public Request $request;
@@ -19,8 +19,6 @@ class Application
     public Session $session;
     public ?DbModel $user;
     public View $view;
-    
-    public static Application $app;
     
     public function __construct(string $rootPath, array $config)
     {

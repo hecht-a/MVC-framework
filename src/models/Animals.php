@@ -15,14 +15,14 @@ class Animals extends DbModel
         return "animaux";
     }
     
-    public function attributes(): array
-    {
-        return ["type_animal"];
-    }
-    
     public static function primaryKey(): string
     {
         return "id";
+    }
+    
+    public function attributes(): array
+    {
+        return ["type_animal"];
     }
     
     public function rules(): array

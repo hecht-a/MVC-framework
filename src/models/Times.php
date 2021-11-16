@@ -16,14 +16,19 @@ class Times extends DbModel
         return "times";
     }
     
-    public function attributes(): array
-    {
-        return ["day"];
-    }
-    
     public static function primaryKey(): string
     {
         return "id";
+    }
+    
+    public static function findAllFree(): array
+    {
+        return array_filter(self::findAll(), fn($time) => !Consultation::findOne(["rdv" => $time->id]));
+    }
+    
+    public function attributes(): array
+    {
+        return ["day"];
     }
     
     public function rules(): array
@@ -37,10 +42,5 @@ class Times extends DbModel
             "id" => $this->id ?? "",
             "day" => $this->day ?? ""
         ];
-    }
-    
-    public static function findAllFree(): array
-    {
-        return array_filter(self::findAll(), fn($time) => !Consultation::findOne(["rdv" => $time->id]));
     }
 }

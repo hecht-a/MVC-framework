@@ -13,7 +13,8 @@ $consultations = $params["consultations"];
 <div class="my__consultations">
     <h1>Liste de mes rendez-vous</h1>
     <div class="list__consultations">
-        <?php /** @var Consultation $consultation */ foreach ($consultations as $consultation): ?>
+        <?php /** @var Consultation $consultation */
+        foreach ($consultations as $consultation): ?>
             <div class="consultation">
                 <a href="/profile/consultation/<?= $consultation->id ?>"><?= TypeConsultation::findOne(["id" => $consultation->type_consultation])->consultation ?></a>
                 <button data-consultid="<?= $consultation->id ?>" class="button edit">Modifier</button>

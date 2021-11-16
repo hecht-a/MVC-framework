@@ -11,6 +11,7 @@ abstract class Model
     public const RULE_MAX = "max";
     public const RULE_MATCH = "match";
     public const RULE_UNIQUE = "unique";
+    public array $errors = [];
     
     public function loadData(array $data)
     {
@@ -20,10 +21,6 @@ abstract class Model
             }
         }
     }
-    
-    public array $errors = [];
-    
-    abstract public function rules(): array;
     
     abstract public function data(): array;
     
@@ -68,17 +65,14 @@ abstract class Model
         return empty($this->errors);
     }
     
+    abstract public function rules(): array;
+    
     private function addErrorForRule(string $attribute, string $rule, $params = [])
     {
         $message = $this->errorMessages()[$rule] ?? "";
         foreach ($params as $key => $value) {
             $message = str_replace("{{$key}}", strval($value), $message);
         }
-        $this->errors[$attribute . "Error"] = $message;
-    }
-    
-    public function addError(string $attribute, string $message)
-    {
         $this->errors[$attribute . "Error"] = $message;
     }
     
@@ -92,5 +86,10 @@ abstract class Model
             self::RULE_MATCH => "Ce champ doit correspondre au champ {match}",
             self::RULE_UNIQUE => "Un enregistrement avec ce {field} existe déjà."
         ];
+    }
+    
+    public function addError(string $attribute, string $message)
+    {
+        $this->errors[$attribute . "Error"] = $message;
     }
 }

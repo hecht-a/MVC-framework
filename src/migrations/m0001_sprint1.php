@@ -1,10 +1,12 @@
 <?php
 
+use App\Core\Application;
+
 class m0001_sprint1
 {
     public function up()
     {
-        $db = \App\Core\Application::$app->db;
+        $db = Application::$app->db;
         $SQL = <<<SQL
                 CREATE TABLE IF NOT EXISTS `users` (
                   `id` int(11) PRIMARY KEY AUTO_INCREMENT NOT NULL,
