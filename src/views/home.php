@@ -4,7 +4,6 @@ $this->title = "Accueil";
 
 <div class="home">
     <div class="container">
-        <?= isset($_GET["success"]) && isset($_SESSION["success"]) ? $_SESSION["success"] : "" ?>
         <div class="titles">
             <h1>Docteur vétérinaire Octavien Doiron</h1>
 
