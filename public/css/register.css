@@ -1,0 +1,117 @@
+@media (max-width: 900px) {
+  .form {
+    margin: 1em auto !important;
+  }
+
+  .container, .login__container, .register__container, .contact__container {
+    height: 100% !important;
+    padding: 1em;
+  }
+}
+.container, .login__container, .register__container, .contact__container {
+  height: calc(100vh - 227px);
+}
+
+.form {
+  width: auto;
+  max-width: 400px;
+  margin: 4em auto;
+  border-radius: 8px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+.form .form__container {
+  background: #FFFFFF;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 0.8em;
+}
+.form .form__container .icon {
+  border-radius: 8px 8px 0 0;
+  width: 100%;
+  background: #a3be8c;
+  margin-bottom: 0.8em;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 0.024), 0 70px 80px rgba(0, 0, 0, 0.06);
+}
+.form .form__container .icon img {
+  width: 64px;
+  height: 64px;
+}
+.form .form__container .message {
+  margin: 0;
+}
+.form .form__container .formulaire {
+  width: 100%;
+  padding: 1em 2em;
+}
+.form .form__container .formulaire .inputs {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+}
+.form .form__container .formulaire .inputs .left, .form .form__container .formulaire .inputs .right {
+  gap: 1em;
+  display: flex;
+  flex-direction: column;
+}
+.form .form__container .formulaire .inputs .left > input, .form .form__container .formulaire .inputs .left > textarea, .form .form__container .formulaire .inputs .right > input, .form .form__container .formulaire .inputs .right > textarea {
+  border-radius: 0;
+  border: 2px solid #2E3440;
+  padding: 0.6em;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+.form .form__container .formulaire .inputs .left > textarea, .form .form__container .formulaire .inputs .right > textarea {
+  resize: vertical;
+}
+.form .form__container .formulaire .inputs .left .error, .form .form__container .formulaire .inputs .right .error {
+  margin: -1em 0 0 0;
+  width: 100%;
+  color: #bf616a;
+  font-size: 0.8em;
+  text-align: left;
+}
+.form .form__container .formulaire .inputs .left .submit, .form .form__container .formulaire .inputs .right .submit {
+  color: #FFFFFF;
+  border: none;
+  background: #a3be8c;
+  border-radius: 5px;
+  padding: 0.6em;
+  font-size: 1em;
+}
+.form .form__container .separateur {
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  font-size: 1em;
+  position: relative;
+}
+.form .form__container .separateur:after {
+  content: "";
+  width: 100%;
+  border-bottom: solid 1px #2E3440;
+  position: absolute;
+  left: 0;
+  top: 45%;
+}
+.form .form__container .separateur > p {
+  display: inline-block;
+  z-index: 3;
+  padding: 0 20px;
+  color: #2E3440;
+  position: relative;
+  margin: 0;
+  background: #FFFFFF;
+}
+.form .form__container .link__signin > a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #2E3440;
+}
+
+/*# sourceMappingURL=register.css.map */
