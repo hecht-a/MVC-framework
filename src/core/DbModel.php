@@ -61,6 +61,17 @@ abstract class DbModel extends Model
         return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
     }
     
+    public static function delete($where) {
+        $tableName = static::tableName();
+        $attributes = array_keys($where);
+        $params = implode(" AND ", array_map(fn($attr) => "$attr = :$attr", $attributes));
+        $statement = self::prepare("DELETE FROM $tableName WHERE $params");
+        foreach ($where as $key => $item) {
+            $statement->bindValue(":$key", $item);
+        }
+        $statement->execute();
+    }
+    
     public static function prepare($sql): bool|PDOStatement
     {
         return Application::$app->db->pdo->prepare($sql);
