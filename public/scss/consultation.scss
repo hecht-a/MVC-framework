@@ -25,23 +25,6 @@
         justify-content: center;
         align-items: center;
 
-        .animal, .consultation, .problem {
-          margin: 0 auto 2em auto;
-          width: 100%;
-          display: flex;
-          flex-direction: column;
-
-          select {
-            border: none;
-            outline: none;
-            border-bottom: 2px solid $black;
-            padding: .6em;
-            font-family: inherit;
-            font-size: inherit;
-            line-height: inherit;
-          }
-        }
-
         .problem {
           display: flex;
           flex-direction: column;
@@ -94,4 +77,21 @@
   color: $red;
   font-size: .8em;
   text-align: left;
+}
+
+.animal, .consultation, .problem, .times {
+  margin: 0 auto 2em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  select {
+    border: none;
+    outline: none;
+    border-bottom: 2px solid $black;
+    padding: .6em;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
 }

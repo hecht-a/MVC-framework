@@ -8,6 +8,8 @@ $animals = $params["animals"];
 /** @var ["id" => int, "animal" => string] $typeConsultation */
 $typeConsultation = $params["typeConsultation"];
 
+/** @var ["id" => int, "animal" => string] $times */
+$times = $params["times"];
 ?>
 
 <div class="container">
@@ -56,10 +58,21 @@ $typeConsultation = $params["typeConsultation"];
             <div class="right">
                 <h1>Choisissez votre date</h1>
                 <div class="calendar__container">
-                    <p> Calendrier de prise de rendez vous</p>
-                    <div>
-                        <input name="date_rdv" id="date_rdv" type="datetime-local">
-                        <p class='error'>{{date_rdvError}}</p>
+                    <p>Calendrier de prise de rendez vous</p>
+                    <div class="times">
+                        <select name="rdv" id="rdv" required>
+                            <option value="null" selected disabled>Selectionner</option>
+                            <?php foreach ($times as $key => $time) {
+                                echo "<optgroup label='$key'>";
+                                foreach ($time as $t) {
+                                    $id = $t["id"];
+                                    $hour = $t["hour"];
+                                    echo "<option value='$id'>$hour</option>";
+                                }
+                                echo "</optgroup>";
+                            } ?>
+                        </select>
+                        <p class='error'>{{rdvError}}</p>
                     </div>
                 </div>
             </div>
