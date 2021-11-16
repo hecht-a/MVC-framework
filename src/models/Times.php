@@ -1,0 +1,46 @@
+<?php
+declare(strict_types=1);
+
+namespace App\models;
+
+
+use App\Core\DbModel;
+
+class Times extends DbModel
+{
+    public string $id;
+    public string $day;
+    
+    public static function tableName(): string
+    {
+        return "times";
+    }
+    
+    public function attributes(): array
+    {
+        return ["day"];
+    }
+    
+    public static function primaryKey(): string
+    {
+        return "id";
+    }
+    
+    public function rules(): array
+    {
+        return [];
+    }
+    
+    public function data(): array
+    {
+        return [
+            "id" => $this->id ?? "",
+            "day" => $this->day ?? ""
+        ];
+    }
+    
+    public static function findAllFree(): array
+    {
+        return array_filter(self::findAll(), fn($time) => !Consultation::findOne(["rdv" => $time->id]));
+    }
+}

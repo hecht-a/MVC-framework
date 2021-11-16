@@ -22,21 +22,6 @@
   justify-content: center;
   align-items: center;
 }
-.container form .consultation__form .consultation__container .animal, .container form .consultation__form .consultation__container .consultation, .container form .consultation__form .consultation__container .problem {
-  margin: 0 auto 2em auto;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.container form .consultation__form .consultation__container .animal select, .container form .consultation__form .consultation__container .consultation select, .container form .consultation__form .consultation__container .problem select {
-  border: none;
-  outline: none;
-  border-bottom: 2px solid #2E3440;
-  padding: 0.6em;
-  font-family: inherit;
-  font-size: inherit;
-  line-height: inherit;
-}
 .container form .consultation__form .consultation__container .problem {
   display: flex;
   flex-direction: column;
@@ -81,6 +66,22 @@
   color: #bf616a;
   font-size: 0.8em;
   text-align: left;
+}
+
+.animal, .consultation, .problem, .times {
+  margin: 0 auto 2em auto;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.animal select, .consultation select, .problem select, .times select {
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #2E3440;
+  padding: 0.6em;
+  font-family: inherit;
+  font-size: inherit;
+  line-height: inherit;
 }
 
 /*# sourceMappingURL=consultation.css.map */

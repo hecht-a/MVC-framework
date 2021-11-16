@@ -31,8 +31,15 @@ $router->get("/login", [AuthController::class, "login"]);
 $router->post("/login", [AuthController::class, "login"]);
 $router->get("/register", [AuthController::class, "register"]);
 $router->post("/register", [AuthController::class, "register"]);
-$router->get("/profile", [AuthController::class, "profile"]);
 $router->get("/logout", [AuthController::class, "logout"]);
+
+$router->group("/profile", function() use ($router){
+    $router->get("", [AuthController::class, "profile"]);
+    $router->get("/consultations", [ConsultationController::class, "list"]);
+    $router->get("/consultation/delete/:id", [ConsultationController::class, "delete"]);
+    $router->get("/consultation/edit/:id", [ConsultationController::class, "edit"]);
+    $router->get("/consultation/:id", [ConsultationController::class, "show"]);
+});
 
 $router->get("/contact", [ContactController::class, "index"]);
 

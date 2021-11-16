@@ -1,0 +1,47 @@
+@import "root";
+
+.my__consultations {
+  height: calc(100vh - 227px);
+  width: 70vw;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .list__consultations {
+
+    .consultation {
+      display: flex;
+      flex-direction: row;
+      gap: .8em;
+      align-items: center;
+      margin: .5em 0;
+
+      a {
+        margin: 0;
+      }
+
+      .button {
+        color: $white;
+        border: none;
+        border-radius: 5px;
+        padding: .6em;
+        font-size: 1em;
+        cursor: pointer;
+
+        &.edit {
+          background: $green;
+        }
+
+        &.delete {
+          background: $red;
+        }
+
+        &:disabled {
+          cursor: auto;
+          background: $grey-6;
+        }
+      }
+    }
+  }
+}

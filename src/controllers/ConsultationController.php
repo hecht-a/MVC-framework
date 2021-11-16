@@ -46,15 +46,41 @@ class ConsultationController extends Controller
             $consultation->loadData(array_merge($request->getBody(), ["user" => Application::$app->session->get("user")]));
             if ($consultation->validate() && $consultation->save()) {
                 Application::$app->session->setFlash("success", "Rendez-vous pris avec succès");
-                $response->redirect("/");
+                $response->redirect("/profile/consultations");
                 exit;
             }
             $this->setLayout("footer");
             return $this->render("consultation", array_merge($consultation->errors, $consultation->data(), $data));
         }
-        /** @var Animals $animals */
-        
         $this->setLayout("footer");
         return $this->render("consultation", $data);
+    }
+    
+    public function list(): bool|array|string
+    {
+        $this->setLayout("footer");
+        return $this->render("/user/consultations", ["consultations" => Consultation::findAll()]);
+    }
+    
+    public function edit(Request $request, Response $response, array $q)
+    {
+        Application::$app->session->setFlash("success", "Rendez-vous modifié avec succès");
+        $response->redirect("/profile/consultations");
+        exit;
+    }
+    
+    public function delete(Request $request, Response $response, array $q)
+    {
+        Consultation::delete(["id" => $q["id"]]);
+        Application::$app->session->setFlash("success", "Rendez-vous supprimé avec succès");
+        $response->redirect("/profile/consultations");
+        exit;
+    }
+    
+    public function show(Request $request, Response $response, array $q) {
+        echo "<pre>";
+        var_dump(Consultation::findOne(["id" => $q["id"]]));
+        echo "</pre>";
+        exit;
     }
 }
