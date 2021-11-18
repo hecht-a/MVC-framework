@@ -15,6 +15,8 @@ class Consultation extends DbModel
     public string $problem = "";
     public string $date_prise_rdv = "";
     public string $rdv = "";
+    public string $domicile = "";
+    public string $done = "";
     
     public static function tableName(): string
     {

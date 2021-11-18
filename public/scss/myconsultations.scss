@@ -8,8 +8,14 @@
   flex-direction: column;
   align-items: center;
 
-  .list__consultations {
+  .description {
+    .item {
+      display: flex;
+      gap: 1em;
+    }
+  }
 
+  .list__consultations {
     .consultation {
       display: flex;
       flex-direction: row;

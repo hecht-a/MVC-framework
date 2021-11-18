@@ -77,11 +77,10 @@ class ConsultationController extends Controller
         exit;
     }
     
-    public function show(Request $request, Response $response, array $q)
+    public function show(Request $request, Response $response, array $q): bool|array|string
     {
-        echo "<pre>";
-        var_dump(Consultation::findOne(["id" => $q["id"]]));
-        echo "</pre>";
-        exit;
+        $consultation = Consultation::findOne(["id" => $q["id"]]);
+        $this->setLayout("footer");
+        return $this->render("user/consultation", ["consultation" => $consultation]);
     }
 }
