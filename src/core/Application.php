@@ -32,6 +32,7 @@ class Application
         $this->db = new Database($config["db"]);
         $this->session = new Session();
         $this->view = new View();
+        $this->controller = new Controller();
         
         $primaryValue = $this->session->get("user");
         if ($primaryValue) {
