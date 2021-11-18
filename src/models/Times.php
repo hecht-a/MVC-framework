@@ -44,4 +44,12 @@ class Times extends DbModel
             "day" => $this->day ?? ""
         ];
     }
+    
+    /**
+     * @throws Exception
+     */
+    public  function __toString(): string
+    {
+        return strftime("%A %e %B à %H:%M", (new \DateTime($this->day))->getTimestamp());
+    }
 }
