@@ -5,6 +5,7 @@ namespace App\models;
 
 
 use App\Core\DbModel;
+use Exception;
 
 class Times extends DbModel
 {
