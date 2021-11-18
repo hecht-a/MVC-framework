@@ -14,10 +14,11 @@ class View
     
     public function renderView(string $view, array $params = []): array|bool|string
     {
-        $layoutContent = $this->layoutContent();
         $viewContent = $this->renderOnlyView($view, $params);
+        $this->getLayoutFunction($viewContent);
+        $layoutContent = $this->layoutContent();
         $content = str_replace("{{content}}", $viewContent, $layoutContent);
-        
+        $content = $this->getComponent($content);
         if (Application::$app->session->get("user")) {
             $content = str_replace("{{user}}", "<li><a href='/profile'>profil</a></li><li><a href='/logout'>déconnexion</a></li>", $content);
         } else {
@@ -55,6 +56,27 @@ class View
     private function setTitleInView(string $content, string $title): string
     {
         return str_replace("{{title}}", $title, $content);
+    }
+    
+    public function getLayoutFunction(string $content)
+    {
+        if (preg_match("/{{ @layout\([\"'][a-zA-Z0-9]+[\"']\) }}/", $content)) {
+            $layout = preg_split("/@layout\([\"']/", $content)[1];
+            $layout = preg_split("/[\"']\)/", $layout)[0];
+            Application::$app->controller->setLayout($layout);
+        }
+    }
+    
+    public function getComponent(string $content)
+    {
+        while (preg_match("/{{ @component\([\"'][a-zA-Z0-9]+[\"']\) }}/", $content)) {
+            $layout = preg_split("/@component\([\"']/", $content)[1];
+            $layout = preg_split("/[\"']\)/", $layout)[0];
+            ob_start();
+            include_once Application::$ROOT_DIR . "/views/components/$layout.php";
+            $content = preg_replace("/{{ @component\([\"']" . $layout . "[\"']\) }}/", ob_get_clean(), $content);
+        }
+        return $content;
     }
     
     public function renderContent(string $viewContent): array|bool|string
