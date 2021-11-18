@@ -1,6 +1,8 @@
 <?php
 declare(strict_types=1);
 
+setlocale(LC_ALL, 'fr_FR');
+
 use App\Controllers\AdminController;
 use App\Controllers\AuthController;
 use App\Controllers\ConsultationController;
