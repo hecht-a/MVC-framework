@@ -69,7 +69,7 @@ class View
     
     public function getComponent(string $content)
     {
-        while (preg_match("/{{ @component\([\"'][a-zA-Z0-9]+[\"']\) }}/", $content)) {
+        while (preg_match("/{{ @component\([\"'][a-zA-Z0-9_]+[\"']\) }}/", $content)) {
             $layout = preg_split("/@component\([\"']/", $content)[1];
             $layout = preg_split("/[\"']\)/", $layout)[0];
             ob_start();
