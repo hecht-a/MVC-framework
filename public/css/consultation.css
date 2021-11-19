@@ -2,6 +2,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: calc(100vh - 227px) !important;
+  margin: 0 auto !important;
 }
 .container form {
   display: flex;
@@ -50,15 +52,77 @@
   display: flex;
   flex-direction: column;
 }
-.container form .submit {
-  margin: auto;
+.container form .consultation__form .right .dom__cab {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.container form .consultation__form .right .dom__cab .switch {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.container form .consultation__form .right .dom__cab .switch p {
+  font-size: 1em;
+}
+.container form .consultation__form .right .dom__cab .switch input[type=checkbox] {
+  height: 0;
+  width: 0;
+  display: none;
+}
+.container form .consultation__form .right .dom__cab .switch input[type=checkbox]:checked + label {
+  background: #848690;
+}
+.container form .consultation__form .right .dom__cab .switch input[type=checkbox]:checked + label:after {
+  left: calc(100% - 5px);
+  transform: translateX(-100%);
+}
+.container form .consultation__form .right .dom__cab .switch label {
+  cursor: pointer;
+  text-indent: -9999px;
+  width: 60px;
+  height: 30px;
+  background: #848690;
+  display: block;
+  border-radius: 100px;
+  position: relative;
+}
+.container form .consultation__form .right .dom__cab .switch label:after {
+  content: "";
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  width: 20px;
+  height: 20px;
+  background: #a3be8c;
+  border-radius: 90px;
+  transition: 0.3s;
+}
+.container form .consultation__form .right .dom__cab .switch label:active:after {
+  width: 30px;
+}
+.container form .buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.2em;
+}
+.container form .buttons button {
   cursor: pointer;
   color: #FFFFFF;
   border: none;
-  background: #a3be8c;
   border-radius: 5px;
   padding: 0.6em;
   font-size: 1em;
+}
+.container form .buttons button.submit {
+  background: #a3be8c;
+}
+.container form .buttons button.cancel {
+  background: #bf616a;
+}
+.container form .buttons button a {
+  color: #FFFFFF;
+  text-decoration: none;
 }
 
 .error {

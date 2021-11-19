@@ -1,6 +1,8 @@
 <?php
 /** @var array $params */
 
+use App\models\Times;
+
 $this->title = "Consultation";
 /** @var ["id" => int, "animal" => string] $animals */
 $animals = $params["animals"];
@@ -10,6 +12,8 @@ $typeConsultation = $params["typeConsultation"];
 
 /** @var ["id" => int, "animal" => string] $times */
 $times = $params["times"];
+
+$requestedConsultation = $params["requestedConsultation"];
 ?>
 
 <div class="container">
@@ -24,9 +28,9 @@ $times = $params["times"];
                     <select name="animal" id="animal" required>
                         <option value="null" selected disabled>Selectionner</option>
                         <?php foreach ($animals as $animal) {
-                            $animalSelected = $animal["animal"] === $params['type_animal'] ? 'selected' : '';
                             $name = $animal["animal"];
                             $id = $animal["id"];
+                            $animalSelected = ($name === $params['type_animal'] || $id === $requestedConsultation["animal"]->id) ? 'selected' : '';
                             echo "<option value='$id' $animalSelected>$name</option>";
                         } ?>
                     </select>
@@ -41,9 +45,9 @@ $times = $params["times"];
                             Type de consultation
                         </option>
                         <?php foreach ($typeConsultation as $type) {
-                            $consultationSelected = $type === $params['consultation'] ? 'selected' : '';
                             $name = $type["type"];
                             $id = $type["id"];
+                            $consultationSelected = ($name === $params['consultation'] || $id === $requestedConsultation["type_consultation"]->id) ? 'selected' : '';
                             echo "<option value='$id' $consultationSelected>$name</option>";
                         } ?>
                     </select>
@@ -51,7 +55,7 @@ $times = $params["times"];
                 </div>
                 <div class="problem">
                     <label for="problem">Explication du problème de votre animal</label>
-                    <textarea name="problem" id="problem"></textarea>
+                    <textarea name="problem" id="problem"><?= $requestedConsultation["problem"] ?? "" ?></textarea>
                     <p class='error'>{{problemError}}</p>
                 </div>
             </div>
@@ -62,6 +66,8 @@ $times = $params["times"];
                     <div class="times">
                         <select name="rdv" id="rdv" required>
                             <option value="null" selected disabled>Selectionner</option>
+                            <option value='<?= Times::findOne(["id" => $requestedConsultation["rdv"]->id])->id ?>' selected><?= Times::findOne(["id" => $requestedConsultation["rdv"]->id]) ?></option>
+                            
                             <?php foreach ($times as $key => $time) {
                                 echo "<optgroup label='$key'>";
                                 foreach ($time as $t) {
@@ -75,8 +81,25 @@ $times = $params["times"];
                         <p class='error'>{{rdvError}}</p>
                     </div>
                 </div>
+                <div class="dom__cab">
+                    <p>Voulez-vous votre rendez-vous à domicile ou au cabinet?</p>
+                    <div class="switch">
+                        <p class="title">au cabinet</p>
+                        <input type="checkbox" id="switch" name="domicile" <?= $requestedConsultation["domicile"] === "1" ? "checked" : "" ?>/>
+                        <label for="switch">Toggle</label>
+                        <p class="title">à domicile</p>
+                    </div>
+                </div>
             </div>
         </div>
-        <button type="submit" class="submit">Confirmer</button>
+        <div class="buttons">
+            <?php if ($requestedConsultation): ?>
+                <button type="submit" class="cancel">
+                    <a href="/profile/consultations">
+                        Annuler
+                    </a></button>
+            <?php endif; ?>
+            <button type="submit" class="submit">Confirmer</button>
+        </div>
     </form>
 </div>
