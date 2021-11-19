@@ -10,6 +10,7 @@
     <link rel='stylesheet' href='/css/myconsultations.css'>
     <link rel='stylesheet' href='/css/index.css'>
     <link rel='stylesheet' href='/css/burger.css'>
+    <link rel='stylesheet' href='/css/admin/index.css'>
     <script src="/js/index.js" defer></script>
     <title>{{title}}</title>
 </head>
