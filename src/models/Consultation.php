@@ -15,7 +15,7 @@ class Consultation extends DbModel
     public string $problem = "";
     public string $date_prise_rdv = "";
     public string $rdv = "";
-    public string $domicile = "";
+    public string $domicile = "0";
     public string $done = "";
     
     public static function tableName(): string
@@ -36,7 +36,7 @@ class Consultation extends DbModel
     
     public function attributes(): array
     {
-        return ["animal", "user", "type_consultation", "problem", "rdv"];
+        return ["animal", "user", "type_consultation", "problem", "rdv", "domicile"];
     }
     
     public function rules(): array
@@ -59,6 +59,7 @@ class Consultation extends DbModel
             "problem" => $this->problem,
             "date_prise_rdv" => $this->date_prise_rdv,
             "rdv" => $this->rdv,
+            "domicile" => $this->domicile === "on" ? 1 : 0,
             "id" => $this->id
         ];
     }
