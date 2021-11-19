@@ -63,6 +63,11 @@ class Consultation extends DbModel
         ];
     }
     
+    public static function isConsultationOwner(string $consultationId): bool
+    {
+        return self::findOne(["id" => $consultationId])->user === Application::$app->session->get("user");
+    }
+    
     public function save(): bool
     {
         return parent::save();
