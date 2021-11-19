@@ -2,6 +2,7 @@
 $this->title = "Profil";
 ?>
 
+{{ @component("profile_navbar") }}
 <div class="profile__container">
     <div>
         <h1>Profile</h1>

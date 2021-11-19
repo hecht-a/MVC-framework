@@ -10,6 +10,7 @@ $this->title = "Mes consultations";
 $consultations = $params["consultations"];
 ?>
 
+{{ @component("profile_navbar") }}
 <div class="my__consultations">
     <h1>Liste de mes rendez-vous</h1>
     <div class="list__consultations">

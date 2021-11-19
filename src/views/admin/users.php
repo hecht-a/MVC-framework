@@ -5,9 +5,9 @@ use App\Models\User;
 
 $this->title = "Utilisateurs";
 $users = User::findAll();
-
 ?>
 
+{{ @layout("admin/navbar") }}
 <h1>users</h1>
 
 <div class="table">
