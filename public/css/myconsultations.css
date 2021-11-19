@@ -1,10 +1,35 @@
 .my__consultations {
-  height: calc(100vh - 227px);
+  height: calc(100vh - 227px - 56px);
   width: 70vw;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.my__consultations .title {
+  display: flex;
+  align-items: center;
+  gap: 1em;
+}
+.my__consultations .title a {
+  text-decoration: none;
+}
+.my__consultations .title a button {
+  display: flex;
+  align-items: center;
+  gap: 0.4em;
+  cursor: pointer;
+  color: #FFFFFF;
+  border: none;
+  background: #54664a;
+  border-radius: 5px;
+  padding: 0.6em;
+  font-size: 1em;
+}
+.my__consultations .title a button svg {
+  font-weight: bold;
+  height: 20px;
+  width: 20px;
 }
 .my__consultations .description .item {
   display: flex;

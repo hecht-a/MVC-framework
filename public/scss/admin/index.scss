@@ -1,9 +1,8 @@
 @import "../root";
 
 .container {
-  margin: 1.4em auto !important;
   display: flex;
-  height: 100%;
+  height: calc(100vh - 227px - 57px - 2.7em);
   gap: 1em;
 
   .content {
