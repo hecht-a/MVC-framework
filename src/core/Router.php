@@ -70,7 +70,7 @@ class Router
                 $savePath = $path;
                 $path = $this->match($method, $savePath);
                 if (!$path) {
-                    $this->e404();
+                    HttpError::e404();
                 }
                 foreach (preg_split("/\//", $path) as $key => $routeParams) {
                     if (in_array($routeParams, $this->params($path))) {
@@ -81,7 +81,7 @@ class Router
         }
         $callback = $routes[$path] ?? false;
         if (!$callback) {
-            $this->e404();
+            HttpError::e404();
         }
         if (is_string($callback)) {
             return Application::$app->view->renderView($callback);
@@ -128,15 +128,6 @@ class Router
             }
         }
         return false;
-    }
-    
-    /**
-     * @throws NotFoundException
-     */
-    public function e404()
-    {
-        Application::$app->response->setStatusCode(404);
-        throw new NotFoundException();
     }
     
     public function params(string $path): array
