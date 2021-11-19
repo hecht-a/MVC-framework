@@ -1,6 +1,7 @@
 <?php
 $this->title = "Accueil";
 ?>
+{{ @layout("main") }}
 
 <div class="home">
     <div class="container">
