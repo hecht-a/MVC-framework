@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Core\Application;
 use App\Core\Controller;
+use App\Core\Exceptions\ForbiddenException;
 use App\Core\Exceptions\NotFoundException;
 use App\Core\HttpError;
 use App\Core\Middlewares\ConsultationMiddleware;
@@ -30,6 +31,7 @@ class ConsultationController extends Controller
      */
     private function data(): array
     {
+        Times::addDays();
         $times = [];
         /** @var Times $time */
         foreach (Times::findAllFree() as $time) {
@@ -76,7 +78,7 @@ class ConsultationController extends Controller
             exit;
         }
         $this->setLayout("footer");
-        return $this->render("consultation", array_merge($consultation->errors, $consultation->data(), $this->data()));
+        return $this->render("consultation", array_merge($consultation->errors, $consultation->data(), $this->data(), ["requestedConsultation" => null]));
     }
     
     public function list(): bool|array|string
@@ -86,12 +88,12 @@ class ConsultationController extends Controller
     }
     
     /**
-     * @throws NotFoundException
+     * @throws ForbiddenException
      */
     public function edit(Request $request, Response $response, array $q)
     {
         if (!Consultation::isConsultationOwner($q["id"])) {
-            HttpError::e404();
+            HttpError::e403();
         }
         /** @var Consultation $consultation */
         $consultation = Consultation::findOne(["id" => $q["id"]]);
@@ -101,12 +103,12 @@ class ConsultationController extends Controller
     }
     
     /**
-     * @throws NotFoundException
+     * @throws ForbiddenException
      */
     public function delete(Request $request, Response $response, array $q)
     {
         if (!Consultation::isConsultationOwner($q["id"])) {
-            HttpError::e404();
+            HttpError::e403();
         }
         Consultation::delete(["id" => $q["id"]]);
         Application::$app->session->setFlash("success", "Rendez-vous supprimé avec succès");
@@ -115,13 +117,13 @@ class ConsultationController extends Controller
     }
     
     /**
-     * @throws NotFoundException
+     * @throws ForbiddenException
      */
     public function show(Request $request, Response $response, array $q): bool|array|string
     {
         $consultation = Consultation::findOne(["id" => $q["id"]]);
         if (!Consultation::isConsultationOwner($q["id"])) {
-            HttpError::e404();
+            HttpError::e403();
         }
         $this->setLayout("footer");
         return $this->render("user/consultation", ["consultation" => $consultation]);
