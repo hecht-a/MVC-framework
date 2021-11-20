@@ -6,5 +6,5 @@ namespace App\Core\Exceptions;
 class UnauthorizedException extends \Exception
 {
     protected $message = "Tu n'es pas autorisé à accéder à cette page.";
-    protected $code = 403;
+    protected $code = 401;
 }
