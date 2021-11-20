@@ -66,7 +66,10 @@ $requestedConsultation = $params["requestedConsultation"];
                     <div class="times">
                         <select name="rdv" id="rdv" required>
                             <option value="null" selected disabled>Selectionner</option>
-                            <option value='<?= Times::findOne(["id" => $requestedConsultation["rdv"]->id])->id ?>' selected><?= Times::findOne(["id" => $requestedConsultation["rdv"]->id]) ?></option>
+                            <?php if (isset($requestedConsultation["rdv"])): ?>
+                                <option value='<?= Times::findOne(["id" => $requestedConsultation["rdv"]->id])->id ?>'
+                                        selected><?= Times::findOne(["id" => $requestedConsultation["rdv"]->id]) ?></option>
+                            <?php endif; ?>
                             
                             <?php foreach ($times as $key => $time) {
                                 echo "<optgroup label='$key'>";
@@ -85,7 +88,8 @@ $requestedConsultation = $params["requestedConsultation"];
                     <p>Voulez-vous votre rendez-vous à domicile ou au cabinet?</p>
                     <div class="switch">
                         <p class="title">au cabinet</p>
-                        <input type="checkbox" id="switch" name="domicile" <?= $requestedConsultation["domicile"] === "1" ? "checked" : "" ?>/>
+                        <input type="checkbox" id="switch"
+                               name="domicile" <?= isset($requestedConsultation["domicile"]) && $requestedConsultation["domicile"] === "1" ? "checked" : "" ?>/>
                         <label for="switch">Toggle</label>
                         <p class="title">à domicile</p>
                     </div>
