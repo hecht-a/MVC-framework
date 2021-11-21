@@ -1,8 +1,9 @@
 <?php
 
 use App\Core\Application;
+use App\Core\BaseMigration;
 
-class m0001_sprint1
+class m0001_sprint1 extends BaseMigration
 {
     public function up()
     {
