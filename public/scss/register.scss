@@ -1,21 +1,7 @@
 @import "root";
 
-@media (max-width: 900px) {
-  .form {
-    margin: 1em auto !important;
-  }
-
-  .container, .login__container, .register__container, .contact__container {
-    height: 100% !important;
-    padding: 1em;
-  }
-}
-
-.container, .login__container, .register__container, .contact__container {
-  height: calc(100vh - 227px);
-}
-
 .form {
+  height: max-content;
   width: auto;
   max-width: 400px;
   margin: 4em auto;
@@ -76,24 +62,11 @@
           & > textarea {
             resize: vertical;
           }
-
-          .error {
-            margin: -1em 0 0 0;
-            width: 100%;
-            color: $red;
-            font-size: .8em;
-            text-align: left;
-          }
-
-          .submit {
-            color: $white;
-            border: none;
-            background: $green;
-            border-radius: 5px;
-            padding: .6em;
-            font-size: 1em;
-          }
         }
+      }
+
+      .submit {
+        margin-top: 1em;
       }
     }
 

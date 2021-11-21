@@ -77,8 +77,10 @@ body .e404 {
 }
 body .container {
   width: 60vw;
+  height: calc(100vh - 95px - 132px);
   margin: auto;
   overflow: auto !important;
+  display: flex;
 }
 body .titles {
   display: flex;
@@ -88,6 +90,35 @@ body .titles {
 body .titles h1, body .titles h4 {
   text-align: center;
   margin: 0;
+}
+
+.mini__navbar {
+  width: 100%;
+  min-height: 50px;
+  font-size: 1.2em;
+  background: #c1c1c1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em;
+}
+.mini__navbar ul {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.mini__navbar ul li {
+  list-style-type: none;
+}
+.mini__navbar ul li a {
+  text-decoration: none;
+  padding: 5px;
+  color: #fff;
+  display: block;
+  text-transform: uppercase;
 }
 
 /*# sourceMappingURL=index.css.map */

@@ -1,18 +1,5 @@
-@media (max-width: 900px) {
-  .form {
-    margin: 1em auto !important;
-  }
-
-  .container, .login__container, .register__container, .contact__container {
-    height: 100% !important;
-    padding: 1em;
-  }
-}
-.container, .login__container, .register__container, .contact__container {
-  height: calc(100vh - 227px);
-}
-
 .form {
+  height: max-content;
   width: auto;
   max-width: 400px;
   margin: 4em auto;
@@ -61,21 +48,6 @@
 }
 .form .form__container .formulaire form > textarea {
   resize: vertical;
-}
-.form .form__container .formulaire form .error {
-  margin: -1em 0 0 0;
-  width: 100%;
-  color: #bf616a;
-  font-size: 0.8em;
-  text-align: left;
-}
-.form .form__container .formulaire form .submit {
-  color: #FFFFFF;
-  border: none;
-  background: #a3be8c;
-  border-radius: 5px;
-  padding: 0.6em;
-  font-size: 1em;
 }
 .form .form__container .separateur {
   width: 50%;

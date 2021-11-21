@@ -1,0 +1,21 @@
+@import "root";
+
+.error {
+  width: 100%;
+  color: $red;
+  font-size: .8em;
+  text-align: left;
+}
+
+.error__margin {
+  margin: -1em 0 0 0;
+}
+
+.submit {
+  color: $white;
+  border: none;
+  background: $green;
+  border-radius: 5px;
+  padding: .6em;
+  font-size: 1em;
+}

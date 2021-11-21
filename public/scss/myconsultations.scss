@@ -1,82 +1,86 @@
 @import "root";
 
-.my__consultations {
-  height: calc(100vh - 227px - 56px);
-  width: 70vw;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.container {
+  height: $container__height_mini_header !important;
 
-  .title {
+  .my__consultations {
+    width: 70vw;
+    margin: auto;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 1em;
 
-    a {
-      text-decoration: none;
-
-      button {
-        display: flex;
-        align-items: center;
-        gap: 0.4em;
-        cursor: pointer;
-        color: $white;
-        border: none;
-        background: $dark-green;
-        border-radius: 5px;
-        padding: .6em;
-        font-size: 1em;
-
-        svg {
-          font-weight: bold;
-          height: 20px;
-          width: 20px;
-        }
-      }
-    }
-  }
-
-  .description {
-    .item {
+    .title {
       display: flex;
-      gap: 1em;
-    }
-  }
-
-  .list__consultations {
-    .consultation {
-      display: flex;
-      flex-direction: row;
-      gap: .8em;
       align-items: center;
-      margin: .5em 0;
+      gap: 1em;
 
       a {
-        margin: 0;
+        text-decoration: none;
+
+        button {
+          display: flex;
+          align-items: center;
+          gap: 0.4em;
+          cursor: pointer;
+          color: $white;
+          border: none;
+          background: $dark-green;
+          border-radius: 5px;
+          padding: .6em;
+          font-size: 1em;
+
+          svg {
+            font-weight: bold;
+            height: 20px;
+            width: 20px;
+          }
+        }
       }
+    }
 
-      .button {
-        color: $white;
-        border: none;
-        border-radius: 5px;
-        padding: .6em;
-        font-size: 1em;
-        cursor: pointer;
+    .description {
+      .item {
+        display: flex;
+        gap: 1em;
+      }
+    }
 
-        &.edit {
-          background: $green;
+    .list__consultations {
+      .consultation {
+        display: flex;
+        flex-direction: row;
+        gap: .8em;
+        align-items: center;
+        margin: .5em 0;
+
+        a {
+          margin: 0;
         }
 
-        &.delete {
-          background: $red;
-        }
+        .button {
+          color: $white;
+          border: none;
+          border-radius: 5px;
+          padding: .6em;
+          font-size: 1em;
+          cursor: pointer;
 
-        &:disabled {
-          cursor: auto;
-          background: $grey-6;
+          &.edit {
+            background: $green;
+          }
+
+          &.delete {
+            background: $red;
+          }
+
+          &:disabled {
+            cursor: auto;
+            background: $grey-6;
+          }
         }
       }
     }
   }
+
 }

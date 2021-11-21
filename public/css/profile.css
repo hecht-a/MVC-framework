@@ -1,28 +1,19 @@
-@media (max-width: 900px) {
-  .profile__container > div {
-    align-items: flex-start !important;
-  }
-  .profile__container .inline {
-    width: 100% !important;
-    flex-direction: column !important;
-  }
+.container {
+  height: calc(calc(100vh - 95px - 132px) - 56px) !important;
 }
-.profile__container {
-  height: calc(100vh - 227px);
-}
-.profile__container > div {
+.container > div {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.profile__container > div p {
+.container > div p {
   font-size: 1.3em;
 }
-.profile__container > div h1 {
+.container > div h1 {
   align-self: center;
 }
-.profile__container > div .inline {
+.container > div .inline {
   width: 50%;
   display: flex;
   justify-content: space-evenly;

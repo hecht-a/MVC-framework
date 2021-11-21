@@ -1,20 +1,22 @@
-.my__consultations {
-  height: calc(100vh - 227px - 56px);
+.container {
+  height: calc(calc(100vh - 95px - 132px) - 56px) !important;
+}
+.container .my__consultations {
   width: 70vw;
   margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.my__consultations .title {
+.container .my__consultations .title {
   display: flex;
   align-items: center;
   gap: 1em;
 }
-.my__consultations .title a {
+.container .my__consultations .title a {
   text-decoration: none;
 }
-.my__consultations .title a button {
+.container .my__consultations .title a button {
   display: flex;
   align-items: center;
   gap: 0.4em;
@@ -26,26 +28,26 @@
   padding: 0.6em;
   font-size: 1em;
 }
-.my__consultations .title a button svg {
+.container .my__consultations .title a button svg {
   font-weight: bold;
   height: 20px;
   width: 20px;
 }
-.my__consultations .description .item {
+.container .my__consultations .description .item {
   display: flex;
   gap: 1em;
 }
-.my__consultations .list__consultations .consultation {
+.container .my__consultations .list__consultations .consultation {
   display: flex;
   flex-direction: row;
   gap: 0.8em;
   align-items: center;
   margin: 0.5em 0;
 }
-.my__consultations .list__consultations .consultation a {
+.container .my__consultations .list__consultations .consultation a {
   margin: 0;
 }
-.my__consultations .list__consultations .consultation .button {
+.container .my__consultations .list__consultations .consultation .button {
   color: #FFFFFF;
   border: none;
   border-radius: 5px;
@@ -53,13 +55,13 @@
   font-size: 1em;
   cursor: pointer;
 }
-.my__consultations .list__consultations .consultation .button.edit {
+.container .my__consultations .list__consultations .consultation .button.edit {
   background: #a3be8c;
 }
-.my__consultations .list__consultations .consultation .button.delete {
+.container .my__consultations .list__consultations .consultation .button.delete {
   background: #bf616a;
 }
-.my__consultations .list__consultations .consultation .button:disabled {
+.container .my__consultations .list__consultations .consultation .button:disabled {
   cursor: auto;
   background: #c1c1c1;
 }

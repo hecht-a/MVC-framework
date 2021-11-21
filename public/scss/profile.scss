@@ -1,18 +1,7 @@
-@media (max-width: 900px) {
-  .profile__container {
-    & > div {
-      align-items: flex-start !important;
-    }
+@import "root";
 
-    .inline {
-      width: 100% !important;
-      flex-direction: column !important;
-    }
-  }
-}
-
-.profile__container {
-  height: calc(100vh - 227px);
+.container {
+  height: $container__height_mini_header !important;
 
   & > div {
     width: 100%;

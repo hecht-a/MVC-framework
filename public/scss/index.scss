@@ -1,6 +1,5 @@
 @import "root";
 
-$header__height: 95px;
 * {
   overflow: hidden;
   box-sizing: border-box;
@@ -91,8 +90,10 @@ body {
 
   .container {
     width: 60vw;
+    height: $container__height;
     margin: auto;
     overflow: auto !important;
+    display: flex;
   }
 
   .titles {
@@ -103,6 +104,38 @@ body {
     h1, h4 {
       text-align: center;
       margin: 0;
+    }
+  }
+}
+
+.mini__navbar {
+  width: 100%;
+  min-height: 50px;
+  font-size: 1.2em;
+  background: $grey-6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.6em;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+
+    li {
+      list-style-type: none;
+
+      a {
+        text-decoration: none;
+        padding: 5px;
+        color: #fff;
+        display: block;
+        text-transform: uppercase;
+      }
     }
   }
 }

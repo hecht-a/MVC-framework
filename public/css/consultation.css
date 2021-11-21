@@ -1,9 +1,6 @@
 .container {
-  display: flex;
   justify-content: center;
   align-items: center;
-  height: calc(100vh - 227px) !important;
-  margin: 0 auto !important;
 }
 .container form {
   display: flex;
@@ -14,15 +11,17 @@
   display: flex;
 }
 .container form .consultation__form .consultation__container, .container form .consultation__form .right {
+  text-align: center;
   height: 100%;
+  width: 50%;
 }
 .container form .consultation__form .consultation__container {
   text-align: center;
-  width: 40%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  margin: 0 2em;
 }
 .container form .consultation__form .consultation__container .problem {
   display: flex;
@@ -44,9 +43,9 @@
 .container form .consultation__form .right {
   display: flex;
   flex-direction: column;
-  width: 60%;
   justify-content: center;
   align-items: center;
+  margin: 0 2em;
 }
 .container form .consultation__form .right .calendar__container {
   display: flex;
@@ -123,13 +122,6 @@
 .container form .buttons button a {
   color: #FFFFFF;
   text-decoration: none;
-}
-
-.error {
-  width: 100%;
-  color: #bf616a;
-  font-size: 0.8em;
-  text-align: left;
 }
 
 .animal, .consultation, .problem, .times {

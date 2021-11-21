@@ -1,18 +1,5 @@
-@media (max-width: 900px) {
-  .form {
-    margin: 1em auto !important;
-  }
-
-  .container, .login__container, .register__container, .contact__container {
-    height: 100% !important;
-    padding: 1em;
-  }
-}
-.container, .login__container, .register__container, .contact__container {
-  height: calc(100vh - 227px);
-}
-
 .form {
+  height: max-content;
   width: auto;
   max-width: 400px;
   margin: 4em auto;
@@ -69,20 +56,8 @@
 .form .form__container .formulaire .inputs .left > textarea, .form .form__container .formulaire .inputs .right > textarea {
   resize: vertical;
 }
-.form .form__container .formulaire .inputs .left .error, .form .form__container .formulaire .inputs .right .error {
-  margin: -1em 0 0 0;
-  width: 100%;
-  color: #bf616a;
-  font-size: 0.8em;
-  text-align: left;
-}
-.form .form__container .formulaire .inputs .left .submit, .form .form__container .formulaire .inputs .right .submit {
-  color: #FFFFFF;
-  border: none;
-  background: #a3be8c;
-  border-radius: 5px;
-  padding: 0.6em;
-  font-size: 1em;
+.form .form__container .formulaire .submit {
+  margin-top: 1em;
 }
 .form .form__container .separateur {
   width: 50%;

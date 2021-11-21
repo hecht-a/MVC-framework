@@ -1,50 +1,13 @@
 @import "../root";
 
 .container {
-  display: flex;
-  height: calc(100vh - 227px - 57px - 2.7em);
+  height: $container__height_mini_header !important;
+  flex-direction: column;
   gap: 1em;
 
-  .content {
-    width: 100%;
-    height: 100%;
-
-    h1 {
-      text-align: center;
-      margin-top: 0;
-    }
-  }
-}
-
-.admin__navbar {
-  width: 100%;
-  min-height: 50px;
-  font-size: 1.2em;
-  background: $grey-6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 0.6em;
-
-  ul {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    li {
-      list-style-type: none;
-
-      a {
-        text-decoration: none;
-        padding: 5px;
-        color: #fff;
-        display: block;
-        text-transform: uppercase;
-      }
-    }
+  h1 {
+    text-align: center;
+    margin-top: 0;
   }
 }
 
