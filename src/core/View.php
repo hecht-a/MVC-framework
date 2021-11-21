@@ -7,6 +7,8 @@ class View
 {
     public string $title = "";
     
+    public array $style = ["index", "bootstrap", "footer", "burger"];
+    
     public function setTitle(string $title)
     {
         $this->title = $title;
@@ -14,10 +16,9 @@ class View
     
     public function renderView(string $view, array $params = []): array|bool|string
     {
-        $viewContent = $this->renderOnlyView($view, $params);
-        $this->getLayoutFunction($viewContent);
+        $content = $this->applyLayoutFunction($this->renderOnlyView($view, $params));
         $layoutContent = $this->layoutContent();
-        $content = str_replace("{{content}}", $viewContent, $layoutContent);
+        $content = str_replace("{{content}}", $content, $layoutContent);
         $content = $this->getComponent($content);
         if (Application::$app->session->get("user")) {
             $content = str_replace("{{user}}", "<li><a href='/profile'>profil</a></li><li><a href='/logout'>déconnexion</a></li>", $content);
@@ -29,6 +30,21 @@ class View
             $content = str_replace("{{flashMessages}}", "<div class='notification success'>" . Application::$app->session->getFlash("success") . " </div>", $content);
         }
         $content = $this->setTitleInView($content, $this->title);
+        preg_match_all("/{{ @add_style\(([\"'][a-zA-Z0-9_\/]+[\"']|\[(\"[a-zA-Z0-9_\/]+\"+\s?,?\s?)+])\) }}/", $content, $matches);
+        foreach ($matches[0] as $match) {
+            $styles = $this->getParam($match);
+            if (is_array($styles)) {
+                foreach ($styles as $style) {
+                    array_push($this->style, $style);
+                }
+            } else {
+                array_push($this->style, $styles);
+            }
+        }
+        $links = join("\n", array_map(fn($link) => "<link rel='stylesheet' href='/css/$link.css'/>", $this->style));
+        if (preg_match("/{{links}}/", $content)) {
+            $content = preg_replace("/{{links}}/", $links, $content);
+        }
         return preg_replace("/.*({{.*}}).*/", "", $content);
     }
     
@@ -58,23 +74,23 @@ class View
         return str_replace("{{title}}", $title, $content);
     }
     
-    public function getLayoutFunction(string $content)
+    public function applyLayoutFunction(string $content): array|string|null
     {
-        if (preg_match("/{{ @layout\([\"'][a-zA-Z0-9]+[\"']\) }}/", $content)) {
-            $layout = preg_split("/@layout\([\"']/", $content)[1];
-            $layout = preg_split("/[\"']\)/", $layout)[0];
-            Application::$app->controller->setLayout($layout);
+        preg_match_all("/{{ @layout\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/", $content, $matches);
+        foreach ($matches[0] as $match) {
+            Application::$app->controller->setLayout($this->getParam($match));
         }
+        return preg_replace("/{{ @layout\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/", "", $content);
     }
     
-    public function getComponent(string $content)
+    public function getComponent(string $content): array|string|null
     {
-        while (preg_match("/{{ @component\([\"'][a-zA-Z0-9_]+[\"']\) }}/", $content)) {
-            $layout = preg_split("/@component\([\"']/", $content)[1];
-            $layout = preg_split("/[\"']\)/", $layout)[0];
+        preg_match_all("/{{ @component\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/s", $content, $matches);
+        foreach ($matches[0] as $match) {
+            $component = $this->getParam($match);
             ob_start();
-            include_once Application::$ROOT_DIR . "/views/components/$layout.php";
-            $content = preg_replace("/{{ @component\([\"']" . $layout . "[\"']\) }}/", ob_get_clean(), $content);
+            include_once Application::$ROOT_DIR . "/views/components/$component.php";
+            $content = preg_replace("/{{ @component\([\"']" . $component . "[\"']\) }}/", ob_get_clean(), $content);
         }
         return $content;
     }
@@ -84,5 +100,13 @@ class View
         $layoutContent = $this->layoutContent();
         $content = str_replace("{{content}}", $viewContent, $layoutContent);
         return preg_replace("/.*({{.*}}).*/", "", $content);
+    }
+    
+    private function getParam(string $content): string|array
+    {
+        $params = preg_split("/\)/", preg_split("/\(/", $content)[1])[0];
+        return str_starts_with($params, "[") && str_ends_with($params, "]")
+            ? array_map(fn($str) => substr(trim($str), 1, -1), preg_split("/,/", substr($params, 1, -1)))
+            : substr($params, 1, -1);
     }
 }
