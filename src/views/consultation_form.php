@@ -18,10 +18,11 @@ $requestedConsultation = $params["requestedConsultation"];
 
 <?php if ($requestedConsultation): ?>
     {{ @component("profile_navbar") }}
+<?php else: ?>
 <?php endif; ?>
 
-{{ @add_style(["consultation", "profile"]) }}
-<div class="container">
+{{ @add_style("consultation_form") }}
+<div class="container<?= $requestedConsultation ? ' edit' : '' ?>">
     <form action="" method="post">
         <div class="consultation__form">
             <div class="consultation__container">
@@ -35,7 +36,11 @@ $requestedConsultation = $params["requestedConsultation"];
                         <?php foreach ($animals as $animal) {
                             $name = $animal["animal"];
                             $id = $animal["id"];
-                            $animalSelected = ($name === $params['type_animal'] || $id === $requestedConsultation["animal"]->id) ? 'selected' : '';
+                            $animalSelected = (
+                                (isset($params['type_animal']) && $name === $params['type_animal'])
+                                || (isset($requestedConsultation["animal"]) && $id === $requestedConsultation["animal"]->id))
+                                ? 'selected'
+                                : '';
                             echo "<option value='$id' $animalSelected>$name</option>";
                         } ?>
                     </select>
@@ -52,7 +57,7 @@ $requestedConsultation = $params["requestedConsultation"];
                         <?php foreach ($typeConsultation as $type) {
                             $name = $type["type"];
                             $id = $type["id"];
-                            $consultationSelected = ($name === $params['consultation'] || $id === $requestedConsultation["type_consultation"]->id) ? 'selected' : '';
+                            $consultationSelected = ((isset($params['consultation']) && $name === $params['consultation']) || (isset($requestedConsultation["type_consultation"]) && $id === $requestedConsultation["type_consultation"]->id)) ? 'selected' : '';
                             echo "<option value='$id' $consultationSelected>$name</option>";
                         } ?>
                     </select>

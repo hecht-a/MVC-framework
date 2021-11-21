@@ -61,7 +61,7 @@ class ConsultationController extends Controller
             $requestedConsultation["type_consultation"] = TypeConsultation::findOne(["id" => $requestedConsultation["type_consultation"]]);
             $requestedConsultation["rdv"] = Times::findOne(["id" => $requestedConsultation["rdv"]]);
         }
-        return $this->render("consultation", array_merge($this->data(), ["requestedConsultation" => $requestedConsultation ?? null]));
+        return $this->render("consultation_form", array_merge($this->data(), ["requestedConsultation" => $requestedConsultation ?? null]));
     }
     
     /**

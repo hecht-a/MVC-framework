@@ -1,5 +1,9 @@
 @import "root";
 
+.edit {
+  height: $container__height_mini_header !important;
+}
+
 .container {
   justify-content: center;
   align-items: center;
