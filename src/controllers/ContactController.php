@@ -9,7 +9,6 @@ class ContactController extends Controller
 {
     public function index(): bool|array|string
     {
-        $this->setLayout("footer");
         return $this->render("contact");
     }
 }

@@ -15,7 +15,6 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->registerMiddleware(new AdminMiddleware(["index", "consultations", "users", "deleteUser", "changeAdmin"]));
-        $this->setLayout("admin/navbar");
     }
     
     public function index(): bool|array|string

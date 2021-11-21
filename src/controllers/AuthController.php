@@ -30,14 +30,12 @@ class AuthController extends Controller
                 exit;
             }
         }
-        $this->setLayout("footer");
         return $this->render("user/login", array_merge($loginForm->errors, $loginForm->data()));
     }
     
     public function register(Request $request, Response $response): bool|array|string
     {
         $user = new User();
-        $this->setLayout("footer");
         if ($request->isPost()) {
             $user->loadData($request->getBody());
             if ($user->validate() && $user->save()) {
@@ -60,7 +58,6 @@ class AuthController extends Controller
     {
         /** @var $user User */
         $user = User::findOne(["id" => Application::$app->session->get("user")]);
-        $this->setLayout("footer");
         return $this->render("user/profile", [
             "email" => $user->email,
             "firstname" => $user->firstname,

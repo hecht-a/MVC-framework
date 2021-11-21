@@ -61,7 +61,6 @@ class ConsultationController extends Controller
             $requestedConsultation["type_consultation"] = TypeConsultation::findOne(["id" => $requestedConsultation["type_consultation"]]);
             $requestedConsultation["rdv"] = Times::findOne(["id" => $requestedConsultation["rdv"]]);
         }
-        $this->setLayout("footer");
         return $this->render("consultation", array_merge($this->data(), ["requestedConsultation" => $requestedConsultation ?? null]));
     }
     
@@ -77,13 +76,11 @@ class ConsultationController extends Controller
             $response->redirect("/profile/consultations");
             exit;
         }
-        $this->setLayout("footer");
         return $this->render("consultation", array_merge($consultation->errors, $consultation->data(), $this->data(), ["requestedConsultation" => null]));
     }
     
     public function list(): bool|array|string
     {
-        $this->setLayout("footer");
         return $this->render("/user/consultations", ["consultations" => Consultation::findAll()]);
     }
     
@@ -125,7 +122,6 @@ class ConsultationController extends Controller
         if (!Consultation::isConsultationOwner($q["id"])) {
             HttpError::e403();
         }
-        $this->setLayout("footer");
         return $this->render("user/consultation", ["consultation" => $consultation]);
     }
 }
