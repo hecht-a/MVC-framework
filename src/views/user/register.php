@@ -2,7 +2,8 @@
 $this->title = "Inscription";
 ?>
 
-<div class="register__container">
+{{ @add_style("register") }}
+<div class="container">
     <div class="form">
         <div class="form__container">
             <div class="icon"><img src="/assets/compte.png" alt=""></div>
@@ -12,23 +13,23 @@ $this->title = "Inscription";
                     <div class="inputs">
                         <div class="left">
                             <input type="text" name="lastname" placeholder="Nom" value="{{lastname}}">
-                            <p class='error'>{{lastnameError}}</p>
+                            <p class='error error__margin'>{{lastnameError}}</p>
                             <input type="text" name="firstname" placeholder="Prénom" value="{{firstname}}">
-                            <p class='error'>{{firstnameError}}</p>
+                            <p class='error error__margin'>{{firstnameError}}</p>
                             <input type="email" name="email" placeholder="E-mail" value="{{email}}">
-                            <p class='error'>{{emailError}}</p>
+                            <p class='error error__margin'>{{emailError}}</p>
                             <input type="password" name="password" placeholder="Mot de passe">
-                            <p class='error'>{{passwordError}}</p>
+                            <p class='error error__margin'>{{passwordError}}</p>
                             <input type="tel" name="tel" pattern="[0-9]{10}" placeholder="Téléphone" value="{{tel}}">
-                            <p class='error'>{{telError}}</p>
+                            <p class='error error__margin'>{{telError}}</p>
                         </div>
                         <div class="right">
                             <input type="text" name="address" placeholder="Adresse">
-                            <p class='error'>{{addressError}}</p>
+                            <p class='error error__margin'>{{addressError}}</p>
                             <input type="text" name="city" placeholder="Ville">
-                            <p class='error'>{{cityError}}</p>
+                            <p class='error error__margin'>{{cityError}}</p>
                             <input type="number" name="post_code" placeholder="Code postal">
-                            <p class='error'>{{post_codeError}}</p>
+                            <p class='error error__margin'>{{post_codeError}}</p>
                         </div>
                     </div>
                     <button type="submit" class="submit">S'inscrire</button>
@@ -43,3 +44,4 @@ $this->title = "Inscription";
         </div>
     </div>
 </div>
+{{ @component("footer") }}

@@ -2,7 +2,8 @@
 $this->title = "Nous contacter";
 ?>
 
-<div class="contact__container">
+{{ @add_style("login") }}
+<div class="container">
     <div class="form">
         <div class="form__container">
             <div class="icon"><img src="/assets/contact.svg" alt=""></div>
@@ -21,3 +22,4 @@ $this->title = "Nous contacter";
         </div>
     </div>
 </div>
+{{ @component("footer") }}

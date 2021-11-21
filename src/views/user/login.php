@@ -2,7 +2,8 @@
 $this->title = "Connexion";
 ?>
 
-<div class="login__container">
+{{ @add_style("login") }}
+<div class="container">
     <div class="form">
         <div class="form__container">
             <div class="icon"><img src="/assets/compte.png" alt=""></div>
@@ -10,9 +11,9 @@ $this->title = "Connexion";
             <div class="formulaire">
                 <form name="login" action="" method="POST">
                     <input type="email" name="email" placeholder="E-mail">
-                    <p class='error'>{{emailError}}</p>
+                    <p class='error error__margin'>{{emailError}}</p>
                     <input type="password" name="password" placeholder="Mot de passe">
-                    <p class='error'>{{passwordError}}</p>
+                    <p class='error error__margin'>{{passwordError}}</p>
                     <button type="submit" class="submit">Se connecter</button>
                 </form>
             </div>
@@ -25,3 +26,4 @@ $this->title = "Connexion";
         </div>
     </div>
 </div>
+{{ @component("footer") }}

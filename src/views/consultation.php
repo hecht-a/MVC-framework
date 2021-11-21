@@ -16,6 +16,11 @@ $times = $params["times"];
 $requestedConsultation = $params["requestedConsultation"];
 ?>
 
+<?php if ($requestedConsultation): ?>
+    {{ @component("profile_navbar") }}
+<?php endif; ?>
+
+{{ @add_style(["consultation", "profile"]) }}
 <div class="container">
     <form action="" method="post">
         <div class="consultation__form">
@@ -107,3 +112,4 @@ $requestedConsultation = $params["requestedConsultation"];
         </div>
     </form>
 </div>
+{{ @component("footer") }}

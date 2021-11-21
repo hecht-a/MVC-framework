@@ -1,9 +1,10 @@
 <?php
 $this->title = "Profil";
 ?>
-
 {{ @component("profile_navbar") }}
-<div class="profile__container">
+
+{{ @add_style("profile") }}
+<div class="container">
     <div>
         <h1>Profile</h1>
 
@@ -15,3 +16,4 @@ $this->title = "Profil";
         <p>Téléphone: {{tel}}</p>
     </div>
 </div>
+{{ @component("footer") }}

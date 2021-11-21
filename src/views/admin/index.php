@@ -2,5 +2,10 @@
 $this->title = "Administration";
 ?>
 
-{{ @layout("admin/navbar") }}
-<h1>index</h1>
+{{ @component("admin_navbar") }}
+
+{{ @add_style("admin/index") }}
+<div class="container">
+    <h1>index</h1>
+</div>
+{{ @component("footer") }}
