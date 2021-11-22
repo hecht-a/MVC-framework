@@ -1,8 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\models;
-
+namespace App\Models;
 
 use App\Core\Application;
 use App\Core\DbModel;

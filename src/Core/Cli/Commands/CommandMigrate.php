@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\core\cli\Commands;
+namespace App\Core\Cli\Commands;
 
 use App\Core\Application;
 use App\Core\Cli\BaseCommand;
