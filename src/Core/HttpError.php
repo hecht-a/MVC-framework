@@ -3,9 +3,9 @@ declare(strict_types=1);
 
 namespace App\Core;
 
-use App\Core\Exceptions\ForbiddenException;
-use App\Core\Exceptions\NotFoundException;
-use App\Core\Exceptions\UnauthorizedException;
+use App\Core\Exceptions\Http\ForbiddenException;
+use App\Core\Exceptions\Http\NotFoundException;
+use App\Core\Exceptions\Http\UnauthorizedException;
 
 class HttpError
 {

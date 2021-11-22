@@ -5,7 +5,7 @@ namespace App\Middlewares;
 
 use App\Core\Application;
 use App\Core\BaseMiddleware;
-use App\Core\Exceptions\ForbiddenException;
+use App\Core\Exceptions\Http\ForbiddenException;
 
 class AdminMiddleware extends BaseMiddleware
 {

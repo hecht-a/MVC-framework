@@ -5,7 +5,7 @@ namespace App\Controllers;
 
 use App\Core\Application;
 use App\Core\Controller;
-use App\Core\Exceptions\ForbiddenException;
+use App\Core\Exceptions\Http\ForbiddenException;
 use App\Core\HttpError;
 use App\Core\Request;
 use App\Core\Response;
