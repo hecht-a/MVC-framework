@@ -9,7 +9,7 @@ class Router
 {
     public Request $request;
     public Response $response;
-    protected array $routes = [];
+    public array $routes = [];
     private array $openedGroups = [];
     
     public function __construct(Request $request, Response $response)
