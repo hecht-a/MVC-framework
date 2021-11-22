@@ -39,7 +39,7 @@ class CommandMakeMigration extends BaseCommand
     
     public function template(string $file): string
     {
-        $templatesFolder = dirname(__DIR__) . "/../../templates";
+        $templatesFolder = dirname(__DIR__) . "/../templates";
         return "$templatesFolder/$file";
     }
     
