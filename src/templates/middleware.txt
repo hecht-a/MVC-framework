@@ -1,0 +1,20 @@
+<?php
+declare(strict_types=1);
+
+namespace App\Middlewares;
+
+use App\Core\BaseMiddleware;
+
+class {{ middlewarename }} extends BaseMiddleware
+{
+
+    public function __construct(array $actions = [])
+    {
+        $this->actions = $actions;
+    }
+
+    public function execute()
+    {
+        // TODO: Implement execute() method.
+    }
+}

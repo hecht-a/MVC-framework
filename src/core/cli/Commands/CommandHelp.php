@@ -13,7 +13,7 @@ class CommandHelp extends BaseCommand
     
     private Application $app;
     
-    public function __construct(Application $app)
+    public function __construct(Application $app, array $args)
     {
         $this->app = $app;
     }

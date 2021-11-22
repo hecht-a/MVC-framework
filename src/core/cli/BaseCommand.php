@@ -9,7 +9,7 @@ abstract class BaseCommand
     public static string $commandName;
     public static string $description;
     
-    abstract public function __construct(Application $app);
+    abstract public function __construct(Application $app, array $args);
     
     public static function getCommands(): array
     {

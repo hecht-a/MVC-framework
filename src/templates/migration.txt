@@ -1,0 +1,19 @@
+<?php
+
+use App\Core\Application;
+use App\Core\BaseMigration;
+
+class {{ migrationname }} extends BaseMigration
+{
+    public function up()
+    {
+        $db = Application::$app->db;
+        $SQL = "";
+        $db->pdo->exec($SQL);
+    }
+
+    public function down()
+    {
+        // TODO: Implement down() method.
+    }
+}

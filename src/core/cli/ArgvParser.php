@@ -23,7 +23,7 @@ class ArgvParser
         if (in_array($commandName, $commands)) {
             $className = [...array_filter(BaseCommand::getCommands(), fn($command) => $command["command"] === $commandName)][0]["class"];
             /** @var BaseCommand $class */
-            $class = new ("App\Core\Cli\Commands\\$className")($this->app);
+            $class = new ("App\Core\Cli\Commands\\$className")($this->app, array_splice($this->arguments, 1));
             $class->run();
             return;
         }
