@@ -1,24 +1,28 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Middlewares;
+namespace App\Middlewares;
 
 use App\Core\Application;
+use App\Core\BaseMiddleware;
+use App\Core\Exceptions\ForbiddenException;
 
-class ConsultationMiddleware extends BaseMiddleware
+class AdminMiddleware extends BaseMiddleware
 {
-    public array $actions = [];
     
     public function __construct(array $actions = [])
     {
         $this->actions = $actions;
     }
     
+    /**
+     * @throws ForbiddenException
+     */
     public function execute()
     {
-        if (Application::isGuest()) {
+        if (!Application::isAdmin()) {
             if (empty($this->actions) || in_array(Application::$app->controller->action, $this->actions)) {
-                Application::$app->response->redirect("/login");
+                throw new ForbiddenException();
             }
         }
     }

@@ -5,10 +5,10 @@ namespace App\Controllers;
 
 use App\Core\Application;
 use App\Core\Controller;
-use App\Core\Middlewares\AuthMiddleware;
-use App\Core\Middlewares\LoggedMiddleware;
 use App\Core\Request;
 use App\Core\Response;
+use App\Middlewares\AuthMiddleware;
+use App\Middlewares\LoggedMiddleware;
 use App\Models\LoginForm;
 use App\Models\User;
 

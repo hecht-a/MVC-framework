@@ -4,9 +4,9 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Core\Middlewares\AdminMiddleware;
 use App\Core\Request;
 use App\Core\Response;
+use App\Middlewares\AdminMiddleware;
 use App\Models\User;
 
 class AdminController extends Controller

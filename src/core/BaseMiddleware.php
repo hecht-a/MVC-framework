@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\Core\Middlewares;
+namespace App\Core;
 
 abstract class BaseMiddleware
 {
