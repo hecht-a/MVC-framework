@@ -1,11 +1,11 @@
+#!/usr/bin/env php
 <?php
-declare(strict_types=1);
 
 use App\Core\Application;
 use Dotenv\Dotenv;
 
-require_once __DIR__ . "/vendor/autoload.php";
-Dotenv::createImmutable(__DIR__)->load();
+require_once __DIR__ . "/../vendor/autoload.php";
+Dotenv::createImmutable(__DIR__ . "/../")->load();
 
 $config = [
     "db" => [
@@ -15,5 +15,5 @@ $config = [
     ]
 ];
 
-$app = new Application(__DIR__ . "/src", $config);
+$app = new Application(__DIR__ . "/../src", $config);
 $app->db->applyMigrations();
