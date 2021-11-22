@@ -9,6 +9,7 @@ class CommandMakeMiddleware extends BaseCommand
 {
     public static string $commandName = "make:middleware";
     public static string $description = "make a middleware";
+    public static array $arguments = [];
     
     private Application $app;
     private array $args;

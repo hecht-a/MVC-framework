@@ -10,6 +10,7 @@ class CommandMigrate extends BaseCommand
 {
     public static string $commandName = "migrate";
     public static string $description = "Launch migrations";
+    public static array $arguments = [];
     
     private Application $app;
     

@@ -9,6 +9,7 @@ class CommandMakeController extends BaseCommand
 {
     public static string $commandName = "make:controller";
     public static string $description = "make a controller";
+    public static array $arguments = [];
     
     private Application $app;
     private array $args;

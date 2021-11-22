@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace App\core\cli\Commands;
+namespace App\Core\Cli\Commands;
 
 use App\Core\Application;
 use App\Core\Cli\BaseCommand;
@@ -20,6 +20,7 @@ class CommandServe extends BaseCommand
     ];
     public static string $commandName = "serve";
     public static string $description = "Launch development server";
+    public static array $arguments = ["--port" => "Port where server listen"];
     
     private Application $app;
     private array $args;
@@ -32,8 +33,7 @@ class CommandServe extends BaseCommand
     
     public function run()
     {
-        $port = 8000;
-        $data = [["test" => "test"]];
+        $port = intval($this->args["--port"]) ?? 8000;
         echo "Starting server..." . PHP_EOL;
         $publicFolder = dirname(__DIR__) . "/../../../public";
         echo $this->showInfos($port);

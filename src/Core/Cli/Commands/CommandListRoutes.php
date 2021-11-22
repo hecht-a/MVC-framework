@@ -10,6 +10,7 @@ class CommandListRoutes extends BaseCommand
 {
     public static string $commandName = "list:routes";
     public static string $description = "List routes";
+    public static array $arguments = [];
     
     private Application $app;
     

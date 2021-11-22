@@ -10,12 +10,15 @@ class CommandHelp extends BaseCommand
 {
     public static string $commandName = "help";
     public static string $description = "Show commands help";
+    public static array $arguments = [];
     
     private Application $app;
+    private array $args;
     
     public function __construct(Application $app, array $args)
     {
         $this->app = $app;
+        $this->args = $args;
     }
     
     public function run()
@@ -36,4 +39,5 @@ class CommandHelp extends BaseCommand
         $table->injectData($help);
         $table->display();
     }
+    
 }

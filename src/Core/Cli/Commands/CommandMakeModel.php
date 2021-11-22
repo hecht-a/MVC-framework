@@ -9,6 +9,7 @@ class CommandMakeModel extends BaseCommand
 {
     public static string $commandName = "make:model";
     public static string $description = "make a model";
+    public static array $arguments = [];
     
     private Application $app;
     private array $args;

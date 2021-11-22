@@ -9,6 +9,7 @@ class CommandMakeMigration extends BaseCommand
 {
     public static string $commandName = "make:migration";
     public static string $description = "make a migration";
+    public static array $arguments = [];
     
     private Application $app;
     private array $args;

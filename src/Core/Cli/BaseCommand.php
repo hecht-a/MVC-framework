@@ -8,6 +8,7 @@ abstract class BaseCommand
 {
     public static string $commandName;
     public static string $description;
+    public static array $arguments;
     
     abstract public function __construct(Application $app, array $args);
     
