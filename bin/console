@@ -1,0 +1,13 @@
+#!/usr/bin/env php
+<?php
+
+use App\Core\Application;
+use App\Core\Cli\ArgvParser;
+
+require_once __DIR__ . "/../vendor/autoload.php";
+
+/** @var Application $app */
+$app = require_once dirname(__DIR__) . "/src/start/routes.php";
+
+$argv = new ArgvParser($app);
+$argv->parse();
