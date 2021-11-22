@@ -115,13 +115,13 @@ class Router
                 if ($pathSplitted[count($pathSplitted) - 2] === $matchSplitted[count($matchSplitted) - 2]) {
                     $matchUrl = true;
                     foreach ($matchSplitted as $item) {
-                        if(!in_array($item, $pathSplitted)) {
-                            if(!preg_match("/:.+/", $item)) {
+                        if (!in_array($item, $pathSplitted)) {
+                            if (!preg_match("/:.+/", $item)) {
                                 $matchUrl = false;
                             }
                         }
                     }
-                    if($matchUrl) {
+                    if ($matchUrl) {
                         return $match;
                     }
                 }

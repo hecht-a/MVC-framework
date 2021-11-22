@@ -8,11 +8,16 @@ use App\Core\DbModel;
 class Animals extends DbModel
 {
     public int $id;
-    public string $type_animal = "";
+    public string $name;
+    public int $height;
+    public int $weight;
+    public string $type = "";
+    public int $age;
+    public int $owner;
     
     public static function tableName(): string
     {
-        return "animaux";
+        return "animals";
     }
     
     public static function primaryKey(): string

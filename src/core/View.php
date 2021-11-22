@@ -48,12 +48,21 @@ class View
         return preg_replace("/.*({{.*}}).*/", "", $content);
     }
     
-    protected function layoutContent(): bool|string
+    public function applyLayoutFunction(string $content): array|string|null
     {
-        $layout = Application::$app->controller->layout ?? "main";
-        ob_start();
-        include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
-        return ob_get_clean();
+        preg_match_all("/{{ @layout\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/", $content, $matches);
+        foreach ($matches[0] as $match) {
+            Application::$app->controller->setLayout($this->getParam($match));
+        }
+        return preg_replace("/{{ @layout\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/", "", $content);
+    }
+    
+    private function getParam(string $content): string|array
+    {
+        $params = preg_split("/\)/", preg_split("/\(/", $content)[1])[0];
+        return str_starts_with($params, "[") && str_ends_with($params, "]")
+            ? array_map(fn($str) => substr(trim($str), 1, -1), preg_split("/,/", substr($params, 1, -1)))
+            : substr($params, 1, -1);
     }
     
     protected function renderOnlyView(string $view, array $params = []): bool|string
@@ -69,18 +78,12 @@ class View
         return preg_replace("/.*({{.*}}).*./", "", $content);
     }
     
-    private function setTitleInView(string $content, string $title): string
+    protected function layoutContent(): bool|string
     {
-        return str_replace("{{title}}", $title, $content);
-    }
-    
-    public function applyLayoutFunction(string $content): array|string|null
-    {
-        preg_match_all("/{{ @layout\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/", $content, $matches);
-        foreach ($matches[0] as $match) {
-            Application::$app->controller->setLayout($this->getParam($match));
-        }
-        return preg_replace("/{{ @layout\([\"'][a-zA-Z0-9_\/]+[\"']\) }}/", "", $content);
+        $layout = Application::$app->controller->layout ?? "main";
+        ob_start();
+        include_once Application::$ROOT_DIR . "/views/layouts/$layout.php";
+        return ob_get_clean();
     }
     
     public function getComponent(string $content): array|string|null
@@ -95,18 +98,15 @@ class View
         return $content;
     }
     
+    private function setTitleInView(string $content, string $title): string
+    {
+        return str_replace("{{title}}", $title, $content);
+    }
+    
     public function renderContent(string $viewContent): array|bool|string
     {
         $layoutContent = $this->layoutContent();
         $content = str_replace("{{content}}", $viewContent, $layoutContent);
         return preg_replace("/.*({{.*}}).*/", "", $content);
-    }
-    
-    private function getParam(string $content): string|array
-    {
-        $params = preg_split("/\)/", preg_split("/\(/", $content)[1])[0];
-        return str_starts_with($params, "[") && str_ends_with($params, "]")
-            ? array_map(fn($str) => substr(trim($str), 1, -1), preg_split("/,/", substr($params, 1, -1)))
-            : substr($params, 1, -1);
     }
 }

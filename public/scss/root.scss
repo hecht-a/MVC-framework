@@ -27,6 +27,6 @@ $purple: #b48ead;
 
 $header__height: 95px;
 $mini__header__height: 56px;
-$footer__height:  132px;
+$footer__height: 132px;
 $container__height: calc(100vh - #{$header__height} - #{$footer__height});
 $container__height_mini_header: calc(#{$container__height} - #{$mini__header__height});

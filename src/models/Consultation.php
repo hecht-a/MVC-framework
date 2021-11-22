@@ -34,6 +34,11 @@ class Consultation extends DbModel
         return array_filter(parent::findAll(), fn($consultation) => Application::$app->session->get("user") === $consultation->user);
     }
     
+    public static function isConsultationOwner(string $consultationId): bool
+    {
+        return self::findOne(["id" => $consultationId])->user === Application::$app->session->get("user");
+    }
+    
     public function attributes(): array
     {
         return ["animal", "user", "type_consultation", "problem", "rdv", "domicile"];
@@ -62,11 +67,6 @@ class Consultation extends DbModel
             "domicile" => $this->domicile === "on" ? 1 : 0,
             "id" => $this->id
         ];
-    }
-    
-    public static function isConsultationOwner(string $consultationId): bool
-    {
-        return self::findOne(["id" => $consultationId])->user === Application::$app->session->get("user");
     }
     
     public function save(): bool

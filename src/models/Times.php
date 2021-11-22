@@ -16,14 +16,20 @@ class Times extends DbModel
     public string $id;
     public string $day;
     
-    public static function tableName(): string
-    {
-        return "times";
-    }
-    
     public static function primaryKey(): string
     {
         return "id";
+    }
+    
+    public static function lastDay(): Times
+    {
+        $array = self::findAllFree();
+        return end($array);
+    }
+    
+    public static function findAllFree(): array
+    {
+        return array_filter(self::findNextDays(), fn($time) => !Consultation::findOne(["rdv" => $time->id]));
     }
     
     public static function findNextDays(): bool|array
@@ -35,15 +41,9 @@ class Times extends DbModel
         return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
     }
     
-    public static function amountDisplayedDays(): int
+    public static function tableName(): string
     {
-        return intval(floor(count(self::findAllFree()) / 8));
-    }
-    
-    public static function lastDay(): Times
-    {
-        $array = self::findAllFree();
-        return end($array);
+        return "times";
     }
     
     /**
@@ -72,9 +72,14 @@ class Times extends DbModel
                 $now = $now->modify("+1 day");
             }
         }
-        if($SQL !== "") {
+        if ($SQL !== "") {
             Application::$app->db->pdo->exec($SQL);
         }
+    }
+    
+    public static function amountDisplayedDays(): int
+    {
+        return intval(floor(count(self::findAllFree()) / 8));
     }
     
     /**
@@ -97,11 +102,6 @@ class Times extends DbModel
         }
         
         return array_diff(self::$hours, $hours);
-    }
-    
-    public static function findAllFree(): array
-    {
-        return array_filter(self::findNextDays(), fn($time) => !Consultation::findOne(["rdv" => $time->id]));
     }
     
     public function attributes(): array

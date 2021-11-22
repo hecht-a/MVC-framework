@@ -2,7 +2,9 @@
 
 namespace App\Core;
 
-abstract class BaseMigration {
+abstract class BaseMigration
+{
     abstract public function up();
+    
     abstract public function down();
 }

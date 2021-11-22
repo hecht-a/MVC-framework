@@ -32,7 +32,7 @@ $router->get("/register", [AuthController::class, "register"]);
 $router->post("/register", [AuthController::class, "register"]);
 $router->get("/logout", [AuthController::class, "logout"]);
 
-$router->group("/profile", function() use ($router){
+$router->group("/profile", function() use ($router) {
     $router->get("", [AuthController::class, "profile"]);
     
     $router->get("/consultations", [ConsultationController::class, "list"]);

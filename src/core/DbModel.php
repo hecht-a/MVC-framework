@@ -23,6 +23,13 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
     
+    abstract public static function tableName(): string;
+    
+    public static function prepare($sql): bool|PDOStatement
+    {
+        return Application::$app->db->pdo->prepare($sql);
+    }
+    
     public static function findAll(): array
     {
         $tableName = static::tableName();
@@ -56,14 +63,7 @@ abstract class DbModel extends Model
         return true;
     }
     
-    abstract public static function tableName(): string;
-    
     abstract public function attributes(): array;
-    
-    public static function prepare($sql): bool|PDOStatement
-    {
-        return Application::$app->db->pdo->prepare($sql);
-    }
     
     public function update(): bool
     {

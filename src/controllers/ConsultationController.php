@@ -6,7 +6,6 @@ namespace App\Controllers;
 use App\Core\Application;
 use App\Core\Controller;
 use App\Core\Exceptions\ForbiddenException;
-use App\Core\Exceptions\NotFoundException;
 use App\Core\HttpError;
 use App\Core\Middlewares\ConsultationMiddleware;
 use App\Core\Request;
@@ -29,6 +28,22 @@ class ConsultationController extends Controller
     /**
      * @throws Exception
      */
+    public function index(Request $request, Response $response, array $params): bool|array|string
+    {
+        if (isset($params["id"])) {
+            /** @var array $requestedConsultation */
+            $requestedConsultation = json_decode(json_encode(Consultation::findOne(["id" => $params["id"]])), true);
+            $requestedConsultation["animal"] = Animals::findOne(["id" => $requestedConsultation["animal"]]);
+            $requestedConsultation["user"] = User::findOne(["id" => $requestedConsultation["user"]]);
+            $requestedConsultation["type_consultation"] = TypeConsultation::findOne(["id" => $requestedConsultation["type_consultation"]]);
+            $requestedConsultation["rdv"] = Times::findOne(["id" => $requestedConsultation["rdv"]]);
+        }
+        return $this->render("consultation_form", array_merge($this->data(), ["requestedConsultation" => $requestedConsultation ?? null]));
+    }
+    
+    /**
+     * @throws Exception
+     */
     private function data(): array
     {
         Times::addDays();
@@ -46,22 +61,6 @@ class ConsultationController extends Controller
             "typeConsultation" => array_map(fn($m) => ["id" => $m->id, "type" => $m->consultation], TypeConsultation::findAll()),
             "times" => $times
         ];
-    }
-    
-    /**
-     * @throws Exception
-     */
-    public function index(Request $request, Response $response, array $params): bool|array|string
-    {
-        if (isset($params["id"])) {
-            /** @var array $requestedConsultation */
-            $requestedConsultation = json_decode(json_encode(Consultation::findOne(["id" => $params["id"]])), true);
-            $requestedConsultation["animal"] = Animals::findOne(["id" => $requestedConsultation["animal"]]);
-            $requestedConsultation["user"] = User::findOne(["id" => $requestedConsultation["user"]]);
-            $requestedConsultation["type_consultation"] = TypeConsultation::findOne(["id" => $requestedConsultation["type_consultation"]]);
-            $requestedConsultation["rdv"] = Times::findOne(["id" => $requestedConsultation["rdv"]]);
-        }
-        return $this->render("consultation_form", array_merge($this->data(), ["requestedConsultation" => $requestedConsultation ?? null]));
     }
     
     /**
