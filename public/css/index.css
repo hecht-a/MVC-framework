@@ -108,7 +108,7 @@ body .titles h1, body .titles h4 {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  gap: 1em;
 }
 .mini__navbar ul li {
   list-style-type: none;

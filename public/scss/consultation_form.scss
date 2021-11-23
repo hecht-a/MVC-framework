@@ -154,6 +154,14 @@
   }
 }
 
+.animal {
+  .add__animals {
+    align-self: flex-start;
+    font-size: 0.9em;
+    margin: 0.4em 0;
+  }
+}
+
 .animal, .consultation, .problem, .times {
   margin: 0 auto 2em auto;
   width: 100%;
