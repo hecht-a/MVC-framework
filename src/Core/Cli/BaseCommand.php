@@ -17,7 +17,9 @@ abstract class BaseCommand
         $dir = scandir(dirname(__DIR__) . "/cli/Commands");
         $files = array_map(fn($file) => explode(".", $file)[0], preg_grep("/^Command.+(.php)$/", $dir));
         return array_map(function($file) {
-            $commandName = ("App\Core\Cli\Commands\\" . $file)::$commandName;
+            /** @var BaseCommand $class */
+            $class = ("App\Core\Cli\Commands\\" . $file);
+            $commandName = $class::$commandName;
             return ["command" => $commandName, "class" => $file];
         }, $files);
     }
