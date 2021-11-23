@@ -34,12 +34,16 @@ $router->get("/logout", [AuthController::class, "logout"]);
 
 $router->group("/profile", function() use ($router) {
     $router->get("", [AuthController::class, "profile"]);
-    
+    $router->get("/animals", "animals");
     $router->get("/consultations", [ConsultationController::class, "list"]);
-    $router->get("/consultation/delete/:id", [ConsultationController::class, "delete"]);
-    $router->get("/consultation/edit/:id", [ConsultationController::class, "index"]);
-    $router->post("/consultation/edit/:id", [ConsultationController::class, "edit"]);
-    $router->get("/consultation/:id", [ConsultationController::class, "show"]);
+    
+    $router->group("/consultation", function() use ($router) {
+        $router->get("/delete/:id", [ConsultationController::class, "delete"]);
+        $router->get("/edit/:id", [ConsultationController::class, "index"]);
+        $router->post("/edit/:id", [ConsultationController::class, "edit"]);
+        $router->get("/:id", [ConsultationController::class, "show"]);
+    });
+    
 });
 
 $router->get("/contact", [ContactController::class, "index"]);
