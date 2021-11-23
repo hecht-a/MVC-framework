@@ -33,9 +33,8 @@ class Times extends DbModel
     
     public static function findNextDays(): bool|array
     {
-        $now = (new DateTime())->format("Y-m-d H:i");
         $tableName = static::tableName();
-        $statement = self::prepare("SELECT * FROM  $tableName WHERE day > '$now'");
+        $statement = self::prepare("SELECT * FROM  $tableName WHERE day > NOW()");
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
     }
@@ -53,7 +52,8 @@ class Times extends DbModel
         $displayedDays = self::amountDisplayedDays();
         $SQL = "";
         if ($displayedDays < 5) {
-            $now = (new DateTime());
+            $nextDays = self::findNextDays();
+            $now = new DateTime(end($nextDays)->day);
             for ($i = 0; $i < 7 - $displayedDays; $i++) {
                 $isWeekend = fn(int $day): bool => $day > 5;
                 if ($isWeekend(intval($now->format("N")))) {
