@@ -29,7 +29,7 @@ $requestedConsultation = $params["requestedConsultation"];
                 <h1>Réservez une consultation dans notre cabinet</h1>
                 <div class="animal">
                     <label for="animal">
-                        Pour quel type d'animal souhaitez-vous prendre rendez-vous ?
+                        Pour quel animal souhaitez-vous prendre rendez-vous ?
                     </label>
                     <select name="animal" id="animal" required>
                         <option value="null" selected disabled>Selectionner</option>
@@ -45,6 +45,9 @@ $requestedConsultation = $params["requestedConsultation"];
                         } ?>
                     </select>
                     <p class='error'>{{animalError}}</p>
+                    <?php if (!$requestedConsultation): ?>
+                        <p class="add__animals">Aucun animal disponible? Ajoutez-en un <a href="/profile/animals/add">ici</a></p>
+                    <?php endif; ?>
                 </div>
                 <div class="consultation">
                     <label for="type_consultation">

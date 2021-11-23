@@ -57,7 +57,7 @@ class ConsultationController extends Controller
             array_push($times[$day->format("l d F Y")], ["hour" => $day->format("H:i"), "id" => $time->id]);
         }
         return [
-            "animals" => array_map(fn($m) => ["id" => $m->id, "animal" => $m->type_animal], Animals::findAll()),
+            "animals" => array_map(fn($m) => ["id" => $m->id, "animal" => "$m->name ($m->type)"], Animals::findAllForUser(intval(Application::$app->session->get("user")))),
             "typeConsultation" => array_map(fn($m) => ["id" => $m->id, "type" => $m->consultation], TypeConsultation::findAll()),
             "times" => $times
         ];
@@ -75,7 +75,7 @@ class ConsultationController extends Controller
             $response->redirect("/profile/consultations");
             exit;
         }
-        return $this->render("consultation", array_merge($consultation->errors, $consultation->data(), $this->data(), ["requestedConsultation" => null]));
+        return $this->render("consultation_form", array_merge($consultation->errors, $consultation->data(), $this->data(), ["requestedConsultation" => null]));
     }
     
     public function list(): bool|array|string
