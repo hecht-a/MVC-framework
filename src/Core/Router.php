@@ -142,6 +142,9 @@ class Router
     
     public function group(string $prefix, callable $callback): self
     {
+        if($openedGroup = $this->getRecentGroup()) {
+            $prefix = $openedGroup . $prefix;
+        }
         array_push($this->openedGroups, $prefix);
         $callback();
         array_pop($this->openedGroups);
