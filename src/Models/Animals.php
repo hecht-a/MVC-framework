@@ -43,4 +43,10 @@ class Animals extends DbModel
             "type_animal" => $this->type_animal
         ];
     }
+    
+    public static function findAllForUser(int $id): array
+    {
+        $animals = self::findAll();
+        return array_filter($animals, fn($animal) => $animal->owner === $id);
+    }
 }
