@@ -33,7 +33,7 @@ class CommandServe extends BaseCommand
     
     public function run()
     {
-        $port = intval($this->args["--port"]) ?? 8000;
+        $port = isset($this->args["--port"]) ? intval($this->args["--port"]) : 8000;
         echo "Starting server..." . PHP_EOL;
         $publicFolder = dirname(__DIR__) . "/../../../public";
         echo $this->showInfos($port);
