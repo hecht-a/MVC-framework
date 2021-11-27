@@ -80,7 +80,16 @@ class ConsultationController extends Controller
     
     public function list(): bool|array|string
     {
-        return $this->render("/user/consultations", ["consultations" => Consultation::findAll()]);
+        $animals = Animals::findAllForUser(intval(Application::$app->session->get("user")));
+        $animals = array_map(
+            fn($animal) => [
+                "animal" => $animal,
+                "consultations" =>
+                    array_map(function($consultation) {
+                        $consultation->type_consultation = TypeConsultation::findOne(["id" => $consultation->type_consultation])->consultation;
+                        return $consultation;
+                    }, Consultation::findForAnimal(intval($animal->id)))], $animals);
+        return $this->render("/user/consultations", ["animals" => $animals]);
     }
     
     /**

@@ -73,4 +73,10 @@ class Consultation extends DbModel
     {
         return parent::save();
     }
+    
+    public static function findForAnimal(int $id): array
+    {
+        $consultations = self::findAll();
+        return array_filter($consultations, fn($consultation) => intval($consultation->animal) === $id);
+    }
 }

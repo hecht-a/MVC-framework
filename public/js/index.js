@@ -26,3 +26,19 @@ buttons.forEach((button) => {
         }
     });
 });
+
+const itemsContainer = document.querySelectorAll(".items__container");
+const arrows = document.querySelectorAll(".fas");
+
+function toggleArrow(itemNumber) {
+    const arrow = arrows[itemNumber];
+    arrow.classList.toggle("fa-sort-up");
+    arrow.classList.toggle("fa-sort-down");
+}
+
+itemsContainer.forEach((item, i) => {
+    item.querySelector(".title__container").addEventListener("click", () => {
+        toggleArrow(i);
+        item.classList.toggle("hidden");
+    });
+});

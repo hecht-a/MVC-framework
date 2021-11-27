@@ -1,53 +1,58 @@
 .container {
   height: calc(calc(100vh - 95px - 132px) - 56px) !important;
-}
-.container .my__consultations {
-  width: 70vw;
-  margin: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.container .my__consultations .title {
+.container .items__container {
+  width: 80%;
+  margin-bottom: 1em;
+}
+.container .items__container .title__container {
   display: flex;
   align-items: center;
-  gap: 1em;
-}
-.container .my__consultations .title a {
-  text-decoration: none;
-}
-.container .my__consultations .title a button {
-  display: flex;
-  align-items: center;
-  gap: 0.4em;
-  cursor: pointer;
-  color: #FFFFFF;
-  border: none;
-  background: #54664a;
+  justify-content: space-between;
+  background: #a3be8c;
+  height: 3em;
+  padding: 0 1em;
   border-radius: 5px;
-  padding: 0.6em;
-  font-size: 1em;
+  user-select: none;
 }
-.container .my__consultations .title a button svg {
-  font-weight: bold;
-  height: 20px;
-  width: 20px;
+.container .items__container .title__container i {
+  height: 16px;
+  width: 16px;
 }
-.container .my__consultations .description .item {
-  display: flex;
-  gap: 1em;
+.container .items__container .title__container i.fa-sort-up {
+  margin-top: 6px;
 }
-.container .my__consultations .list__consultations .consultation {
-  display: flex;
-  flex-direction: row;
-  gap: 0.8em;
-  align-items: center;
-  margin: 0.5em 0;
+.container .items__container .title__container i.fa-sort-down {
+  margin-bottom: 6px;
 }
-.container .my__consultations .list__consultations .consultation a {
+.container .items__container .title__container .title {
+  color: #FFFFFF;
+}
+.container .items__container ul {
   margin: 0;
+  padding: 0;
+  animation: display 1s;
 }
-.container .my__consultations .list__consultations .consultation .button {
+.container .items__container ul li {
+  display: flex;
+  align-items: center;
+  padding: 0 2em;
+  margin: 0.2em 0;
+  height: 3em;
+  background: #c1c1c1;
+  list-style-type: none;
+  border-radius: 5px;
+}
+.container .items__container ul li .item {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.container .items__container ul li .item .button {
   color: #FFFFFF;
   border: none;
   border-radius: 5px;
@@ -55,15 +60,21 @@
   font-size: 1em;
   cursor: pointer;
 }
-.container .my__consultations .list__consultations .consultation .button.edit {
+.container .items__container ul li .item .button.edit {
   background: #a3be8c;
 }
-.container .my__consultations .list__consultations .consultation .button.delete {
+.container .items__container ul li .item .button.delete {
   background: #bf616a;
 }
-.container .my__consultations .list__consultations .consultation .button:disabled {
+.container .items__container ul li .item .button:disabled {
   cursor: auto;
   background: #c1c1c1;
+}
+.container .items__container ul li .item .title a {
+  color: #FFFFFF;
+}
+.container .items__container.hidden > ul {
+  display: none;
 }
 
 /*# sourceMappingURL=myconsultations.css.map */

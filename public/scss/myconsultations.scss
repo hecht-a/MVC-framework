@@ -2,83 +2,97 @@
 
 .container {
   height: $container__height_mini_header !important;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-  .my__consultations {
-    width: 70vw;
-    margin: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  .items__container {
+    width: 80%;
+    margin-bottom: 1em;
 
-    .title {
+    .title__container {
       display: flex;
       align-items: center;
-      gap: 1em;
+      justify-content: space-between;
+      background: #a3be8c;
+      height: 3em;
+      padding: 0 1em;
+      border-radius: 5px;
+      user-select: none;
 
-      a {
-        text-decoration: none;
+      i {
+        height: 16px;
+        width: 16px;
 
-        button {
-          display: flex;
-          align-items: center;
-          gap: 0.4em;
-          cursor: pointer;
-          color: $white;
-          border: none;
-          background: $dark-green;
-          border-radius: 5px;
-          padding: .6em;
-          font-size: 1em;
+        &.fa-sort-up {
+          margin-top: 6px;
+        }
 
-          svg {
-            font-weight: bold;
-            height: 20px;
-            width: 20px;
-          }
+        &.fa-sort-down {
+          margin-bottom: 6px;
         }
       }
-    }
 
-    .description {
-      .item {
-        display: flex;
-        gap: 1em;
+      .title {
+        color: $white;
       }
     }
 
-    .list__consultations {
-      .consultation {
+    ul {
+      margin: 0;
+      padding: 0;
+      animation: display 1s;
+
+      li {
         display: flex;
-        flex-direction: row;
-        gap: .8em;
         align-items: center;
-        margin: .5em 0;
+        padding: 0 2em;
+        margin: 0.2em 0;
+        height: 3em;
+        background: #c1c1c1;
+        list-style-type: none;
+        border-radius: 5px;
 
-        a {
-          margin: 0;
+        .item {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .button {
+            color: #FFFFFF;
+            border: none;
+            border-radius: 5px;
+            padding: 0.6em;
+            font-size: 1em;
+            cursor: pointer;
+
+            &.edit {
+              background: #a3be8c;
+            }
+
+            &.delete {
+              background: #bf616a;
+            }
+
+            &:disabled {
+              cursor: auto;
+              background: #c1c1c1;
+            }
+          }
+
+          .title {
+            a {
+              color: $white;
+            }
+          }
         }
+      }
+    }
 
-        .button {
-          color: $white;
-          border: none;
-          border-radius: 5px;
-          padding: .6em;
-          font-size: 1em;
-          cursor: pointer;
-
-          &.edit {
-            background: $green;
-          }
-
-          &.delete {
-            background: $red;
-          }
-
-          &:disabled {
-            cursor: auto;
-            background: $grey-6;
-          }
-        }
+    &.hidden {
+      & > ul {
+        display: none;
       }
     }
   }
