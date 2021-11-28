@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\AdminController;
+use App\Controllers\AnimalsController;
 use App\Controllers\AuthController;
 use App\Controllers\ConsultationController;
 use App\Controllers\ContactController;
@@ -34,8 +35,14 @@ $router->get("/logout", [AuthController::class, "logout"]);
 
 $router->group("/profile", function() use ($router) {
     $router->get("", [AuthController::class, "profile"]);
-    $router->get("/animals", "animals");
+    $router->get("/animals", [AnimalsController::class, "list"]);
     $router->get("/consultations", [ConsultationController::class, "list"]);
+    
+    $router->group("/animal", function() use ($router) {
+        $router->get("/:id", [AnimalsController::class, "index"]);
+        $router->get("/edit/:id", [AnimalsController::class, "edit"]);
+        $router->post("/edit/:id", [AnimalsController::class, "edit"]);
+    });
     
     $router->group("/consultation", function() use ($router) {
         $router->get("/delete/:id", [ConsultationController::class, "delete"]);
@@ -43,7 +50,6 @@ $router->group("/profile", function() use ($router) {
         $router->post("/edit/:id", [ConsultationController::class, "edit"]);
         $router->get("/:id", [ConsultationController::class, "show"]);
     });
-    
 });
 
 $router->get("/contact", [ContactController::class, "index"]);

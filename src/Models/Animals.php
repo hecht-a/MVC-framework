@@ -27,20 +27,22 @@ class Animals extends DbModel
     
     public function attributes(): array
     {
-        return ["type_animal"];
+        return ["name", "type"];
     }
     
     public function rules(): array
     {
         return [
-            "type_animal" => [self::RULE_REQUIRED]
+            "name" => [self::RULE_REQUIRED],
+            "type" => [self::RULE_REQUIRED]
         ];
     }
     
     public function data(): array
     {
         return [
-            "type_animal" => $this->type_animal
+            "name" => $this->name,
+            "type" => $this->type
         ];
     }
     
