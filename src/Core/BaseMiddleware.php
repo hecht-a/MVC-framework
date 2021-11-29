@@ -9,5 +9,8 @@ abstract class BaseMiddleware
     
     abstract public function __construct(array $actions = []);
     
+    /**
+     * Execute le middleware
+     */
     abstract public function execute();
 }

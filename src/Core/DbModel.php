@@ -8,9 +8,18 @@ use PDOStatement;
 
 abstract class DbModel extends Model
 {
+    /**
+     * Permet de spécifier la clé primaire de la table
+     * @return string
+     */
     abstract public static function primaryKey(): string;
     
-    public static function findOne($where)
+    /**
+     * Permet de récupérer une ligne de la db en fonction de la condition `$where`
+     * @param $where
+     * @return DbModel|bool
+     */
+    public static function findOne($where): DbModel|bool
     {
         $tableName = static::tableName();
         $attributes = array_keys($where);
@@ -23,13 +32,26 @@ abstract class DbModel extends Model
         return $statement->fetchObject(static::class);
     }
     
+    /**
+     * Permet de spécifier le nom de la table
+     * @return string
+     */
     abstract public static function tableName(): string;
     
+    /**
+     * Prépare une requête SQL
+     * @param $sql
+     * @return bool|PDOStatement
+     */
     public static function prepare($sql): bool|PDOStatement
     {
         return Application::$app->db->pdo->prepare($sql);
     }
     
+    /**
+     * Permet de récupérer toutes les lignes d'une table
+     * @return DbModel[]
+     */
     public static function findAll(): array
     {
         $tableName = static::tableName();
@@ -38,6 +60,10 @@ abstract class DbModel extends Model
         return $statement->fetchAll(PDO::FETCH_CLASS, static::class);
     }
     
+    /**
+     * Permet de supprimer une ligne de la db en fonction de la condition `$where`
+     * @param $where
+     */
     public static function delete($where)
     {
         $tableName = static::tableName();
@@ -50,6 +76,10 @@ abstract class DbModel extends Model
         $statement->execute();
     }
     
+    /**
+     * Permet d'effectuer une insertion dans la db
+     * @return bool
+     */
     public function save(): bool
     {
         $tableName = $this->tableName();
@@ -63,8 +93,16 @@ abstract class DbModel extends Model
         return true;
     }
     
+    /**
+     * Sert à spécifier les attributs à insérer dans la db
+     * @return array
+     */
     abstract public function attributes(): array;
     
+    /**
+     * Permet de mettre à jour une ligne de la db
+     * @return bool
+     */
     public function update(): bool
     {
         $tableName = $this->tableName();

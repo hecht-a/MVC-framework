@@ -19,6 +19,9 @@ class Database
         $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
     
+    /**
+     * Applique les migrations dans la db
+     */
     public function applyMigrations()
     {
         $this->createMigrationTable();
@@ -50,6 +53,9 @@ class Database
         }
     }
     
+    /**
+     * Créer la table qui contient les noms des migrations créées
+     */
     public function createMigrationTable()
     {
         $this->pdo->exec("CREATE TABLE IF NOT EXISTS migrations (
@@ -59,6 +65,10 @@ class Database
         )  ENGINE=INNODB;");
     }
     
+    /**
+     * Retourne le contenu de la table `migrations`
+     * @return array
+     */
     public function getAppliedMigrations(): array
     {
         $statement = $this->pdo->prepare("SELECT migration FROM migrations");
@@ -66,17 +76,30 @@ class Database
         return $statement->fetchAll(PDO::FETCH_COLUMN);
     }
     
+    /**
+     * Message de log
+     * @param $message
+     */
     protected function log($message)
     {
         echo "[" . date("d-m-Y H:i:s") . "] - " . $message . PHP_EOL;
     }
     
+    /**
+     * Enregistre la migration dans la db
+     * @param $migration
+     */
     public function saveMigrations($migration)
     {
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES $migration");
         $statement->execute();
     }
     
+    /**
+     * Prepare une requête SQL
+     * @param $sql
+     * @return bool|PDOStatement
+     */
     public function prepare($sql): bool|PDOStatement
     {
         return $this->pdo->prepare($sql);

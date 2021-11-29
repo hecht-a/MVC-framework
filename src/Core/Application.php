@@ -43,11 +43,19 @@ class Application
         }
     }
     
+    /**
+     * false si l'utilisateur est connecté, true sinon
+     * @return bool
+     */
     public static function isGuest(): bool
     {
         return !self::$app->user;
     }
     
+    /**
+     * true si l'utilisateur est admin, false sinon
+     * @return bool
+     */
     public static function isAdmin(): bool
     {
         /** @var User|false $user */
@@ -55,6 +63,9 @@ class Application
         return $user && (bool)$user->admin;
     }
     
+    /**
+     * Lance le framework
+     */
     public function run()
     {
         try {
@@ -73,6 +84,7 @@ class Application
     }
     
     /**
+     * Retourne le controller utilisé par la page visitée
      * @return Controller
      */
     public function getController(): Controller
@@ -81,6 +93,7 @@ class Application
     }
     
     /**
+     * Définit le controller de la page voulue
      * @param Controller $controller
      */
     public function setController(Controller $controller): void
@@ -88,6 +101,11 @@ class Application
         $this->controller = $controller;
     }
     
+    /**
+     * Connecte un utilisateur
+     * @param DbModel $user
+     * @return bool
+     */
     public function login(DbModel $user): bool
     {
         $this->user = $user;
@@ -97,6 +115,9 @@ class Application
         return true;
     }
     
+    /**
+     * Déconnecte l'utilisateur
+     */
     public function logout()
     {
         $this->user = null;

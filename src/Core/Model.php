@@ -13,6 +13,10 @@ abstract class Model
     public const RULE_UNIQUE = "unique";
     public array $errors = [];
     
+    /**
+     * Permet d'initialiser les données contenues dans un model avant une insertion dans la db
+     * @param array $data
+     */
     public function loadData(array $data)
     {
         foreach ($data as $key => $value) {
@@ -22,8 +26,16 @@ abstract class Model
         }
     }
     
+    /**
+     * Retourne les données contenues dans le model
+     * @return array
+     */
     abstract public function data(): array;
     
+    /**
+     * Sert à valider les données contenues dans le model
+     * @return bool
+     */
     public function validate(): bool
     {
         foreach ($this->rules() as $attribute => $rules) {
@@ -65,8 +77,18 @@ abstract class Model
         return empty($this->errors);
     }
     
+    /**
+     * Sert à définir les règles de validation des données du model
+     * @return array
+     */
     abstract public function rules(): array;
     
+    /**
+     * Permet d'ajouter une erreur pour la règle correspondante
+     * @param string $attribute
+     * @param string $rule
+     * @param array $params
+     */
     private function addErrorForRule(string $attribute, string $rule, $params = [])
     {
         $message = $this->errorMessages()[$rule] ?? "";
@@ -76,6 +98,10 @@ abstract class Model
         $this->errors[$attribute . "Error"] = $message;
     }
     
+    /**
+     * Permet de définir les messages d'erreur en fonction des règles
+     * @return string[]
+     */
     public function errorMessages(): array
     {
         return [
@@ -88,6 +114,11 @@ abstract class Model
         ];
     }
     
+    /**
+     * Ajoute une erreur
+     * @param string $attribute
+     * @param string $message
+     */
     public function addError(string $attribute, string $message)
     {
         $this->errors[$attribute . "Error"] = $message;

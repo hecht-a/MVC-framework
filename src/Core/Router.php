@@ -18,11 +18,21 @@ class Router
         $this->response = $response;
     }
     
+    /**
+     * Retire les paramètres de l'url
+     * @param string $path
+     * @return string
+     */
     public function removeParams(string $path): string
     {
         return $this->dropSlash(preg_split("/:.+/", $path)[0]);
     }
     
+    /**
+     * Retire les slash en trop
+     * @param string $input
+     * @return string
+     */
     private function dropSlash(string $input): string
     {
         if ($input === "/") {
@@ -31,6 +41,11 @@ class Router
         return preg_replace("/\/\//", "/", "/" . preg_replace("/(\/)$/", "", preg_replace("/^\//", "", $input)));
     }
     
+    /**
+     * Permet d'enregister une route avec la méthode GET
+     * @param string $path
+     * @param $callback
+     */
     public function get(string $path, $callback)
     {
         $openedGroup = $this->getRecentGroup();
@@ -41,11 +56,20 @@ class Router
         }
     }
     
+    /**
+     * Retourne le dernier groupe créé
+     * @return array
+     */
     private function getRecentGroup()
     {
         return $this->openedGroups[count($this->openedGroups) - 1] ?? [];
     }
     
+    /**
+     * Permet d'enregister une route avec la méthode POST
+     * @param string $path
+     * @param $callback
+     */
     public function post(string $path, $callback)
     {
         $openedGroup = $this->getRecentGroup();
@@ -57,6 +81,7 @@ class Router
     }
     
     /**
+     * Effectue l'action correspondant à la route demandée par l'utilisateur
      * @throws NotFoundException
      */
     public function resolve()
@@ -100,6 +125,12 @@ class Router
         return call_user_func($callback, $this->request, $this->response, $params);
     }
     
+    /**
+     * Retourne la route créée qui correspond à l'url visitée
+     * @param string $method
+     * @param string $path
+     * @return false|mixed
+     */
     public function match(string $method, string $path)
     {
         $pathSplitted = preg_split("/\//", $path);
@@ -130,6 +161,11 @@ class Router
         return false;
     }
     
+    /**
+     * Retourne les paramètre donnés dans l'url
+     * @param string $path
+     * @return array
+     */
     public function params(string $path): array
     {
         return array_reduce(preg_split("/\//", $path), function($acc, $curr) {
@@ -140,6 +176,12 @@ class Router
         }, []);
     }
     
+    /**
+     * Permet de créer un groupe d'url
+     * @param string $prefix
+     * @param callable $callback
+     * @return $this
+     */
     public function group(string $prefix, callable $callback): self
     {
         if($openedGroup = $this->getRecentGroup()) {

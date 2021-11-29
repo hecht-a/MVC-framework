@@ -5,6 +5,10 @@ namespace App\Core;
 
 class Request
 {
+    /**
+     * Retourne l'url par l'utilisateur
+     * @return string
+     */
     public function getPath(): string
     {
         $path = $_SERVER["REQUEST_URI"] ?? "/";
@@ -15,21 +19,37 @@ class Request
         return substr($path, 0, $position);
     }
     
+    /**
+     * true si la methode HTTP est GET, false sinon
+     * @return bool
+     */
     public function isGet(): bool
     {
         return $this->method() === "get";
     }
     
+    /**
+     * Retourne la methode HTTP
+     * @return string
+     */
     public function method(): string
     {
         return strtolower($_SERVER["REQUEST_METHOD"]);
     }
     
+    /**
+     * true si la methode HTTP est POST, false sinon
+     * @return bool
+     */
     public function isPost(): bool
     {
         return $this->method() === "post";
     }
     
+    /**
+     * Retourne le contenu de la requête
+     * @return array
+     */
     public function getBody(): array
     {
         $body = [];

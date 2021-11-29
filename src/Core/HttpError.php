@@ -10,6 +10,7 @@ use App\Core\Exceptions\Http\UnauthorizedException;
 class HttpError
 {
     /**
+     * Exception HTTP 401
      * @throws UnauthorizedException
      */
     public static function e401()
@@ -20,6 +21,7 @@ class HttpError
     }
     
     /**
+     * Exception HTTP 403
      * @throws ForbiddenException
      */
     public static function e403()
@@ -29,6 +31,7 @@ class HttpError
     }
     
     /**
+     * Exception HTTP 404
      * @throws NotFoundException
      */
     public static function e404()
